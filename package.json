@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/atanasov-deyan/S3-file-browser#readme",
   "devDependencies": {
+    "@types/react": "8.2.12",
+    "@types/react-dom": "8.2.5",
     "@vitejs/plugin-react": "4.0.0",
     "eslint": "8.43.0",
     "eslint-config-prettier": "8.8.0",
