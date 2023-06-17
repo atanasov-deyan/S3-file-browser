@@ -9,6 +9,7 @@
   color: var(--white);
   border-radius: 4px;
   border: none;
+  cursor: pointer;
 }
 
 .button-small {
@@ -27,7 +28,8 @@
 }
 
 .button-default {
-  background-color: var(--zumthor-blue)
+  background-color: var(--zumthor-blue);
+  color: var(--black);
 }
 
 .button-primary {
@@ -36,4 +38,29 @@
 
 .button-ghost {
   background-color: var(--mischka-grey);
+  color: var(--black);
+}
+
+.button-default:active {
+  background-color: var(--hawkes-blue);
+}
+
+.button-primary:active {
+  background-color: var(--blue-ribbon);
+}
+
+.button-ghost:active {
+  background-color: var(--ghost);
+}
+
+.button-default:hover {
+  background-color: var(--hawkes-blue);
+}
+
+.button-primary:hover {
+  background-color: var(--blue-ribbon);
+}
+
+.button-ghost:hover {
+  background-color: var(--ghost);
 }
