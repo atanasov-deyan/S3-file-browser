@@ -64,3 +64,9 @@
 .button-ghost:hover {
   background-color: var(--ghost);
 }
+
+.button:disabled {
+  cursor: not-allowed;
+  background-color: var(--ghost);
+  color: var(--silver);
+}

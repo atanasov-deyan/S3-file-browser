@@ -14,6 +14,8 @@ interface IButtonProps {
   htmlType:  ButtonHTMLType,
   children: ReactElement | string,
   className?: string | undefined,
+  disabled?: boolean,
+  loading?: boolean,
 }
 
 export const Button = ({
@@ -23,6 +25,9 @@ export const Button = ({
   onClick,
   size = 'middle',
   type = 'default',
+  disabled,
+  // todo: add loading indication, e.g. spinner
+  loading,
 }: IButtonProps) => {
   const classNames = useMemo(() => {
     const typeClass = styles[`button-${type}`]
@@ -42,6 +47,7 @@ export const Button = ({
       className={classNames}
       onClick={onClick}
       type={htmlType}
+      disabled={disabled}
     >
       {children}
     </button>
