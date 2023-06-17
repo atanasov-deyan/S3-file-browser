@@ -1,4 +1,4 @@
-@import '../vars.css';
+@import '../css/vars.css';
 
 .form-container {
   background-color: var(--mischka-grey);
