@@ -1,6 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
+import { Routes } from './Routes';
+
 const MOUNT_NODE = document.getElementById('root');
 
 if (!MOUNT_NODE) {
@@ -11,9 +13,8 @@ const root = createRoot(MOUNT_NODE)
 
 const render = () => {
   root.render(
-    <>S3 bucket browser</>
+    <Routes/>
   )
 }
-
 
 render()
