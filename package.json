@@ -1,0 +1,37 @@
+{
+  "name": "s3-file-browser",
+  "version": "1.0.0",
+  "description": "Solution to the lucidlink FE engineer assignment",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "npm run dev",
+    "format": "prettier --write \"src/**.*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint \"src/**.*.{js,jsx,ts,tsx}\" --quiet",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atanasov-deyan/S3-file-browser.git"
+  },
+  "keywords": [],
+  "author": "Deyan Atanasov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atanasov-deyan/S3-file-browser/issues"
+  },
+  "homepage": "https://github.com/atanasov-deyan/S3-file-browser#readme",
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.0.0",
+    "eslint": "8.43.0",
+    "eslint-config-prettier": "8.8.0",
+    "prettier": "2.8.8",
+    "vite": "4.3.9"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
