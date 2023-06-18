@@ -1,0 +1,9 @@
+@import '../../css/vars.css';
+
+.header {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  background: var(--white);
+  padding: 4px 8px;
+}

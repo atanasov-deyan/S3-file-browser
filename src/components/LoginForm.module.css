@@ -1,0 +1,32 @@
+@import '../css/vars.css';
+
+.form-container {
+  background-color: var(--mischka-grey);
+  width: 460px;
+  margin-top: 32px;
+}
+
+.items-list {
+  padding: 40px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 8px;
+}
+
+.label {
+  color: var(--mine-shaft);
+  padding-bottom: 4px;
+  padding-left: 8px;
+}
+
+.input {
+  height: 34px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--silver);
+  font-size: 18px;
+  color: var(--black);
+}
