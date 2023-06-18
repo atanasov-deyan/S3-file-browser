@@ -13,7 +13,7 @@ export interface IButtonProps extends Omit<ComponentProps<'button'>, "type"> {
   type?: ButtonType;
   htmlType:  ButtonHTMLType,
   children: ReactNode,
-  loading: boolean,
+  loading?: boolean,
 }
 
 export const Button = ({
@@ -23,9 +23,9 @@ export const Button = ({
   onClick,
   size = 'middle',
   type = 'default',
-  disabled,
   // todo: add loading indication, e.g. spinner
   loading,
+  ...rest
 }: IButtonProps) => {
   const classNames = useMemo(() => {
     const typeClass = styles[`button-${type}`]
@@ -45,7 +45,7 @@ export const Button = ({
       className={classNames}
       onClick={onClick}
       type={htmlType}
-      disabled={disabled}
+      {...rest}
     >
       {children}
     </button>

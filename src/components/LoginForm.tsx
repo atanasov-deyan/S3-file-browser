@@ -14,7 +14,7 @@ export const LoginForm = () => {
     const bucketName = event.currentTarget.elements.bucketName.value;
 
   };
-  // todo: abstract Label and Input
+  // todo: abstract Form and Input into layout components
   return (
     <section className={styles['form-container']}>
       <form onSubmit={handleSubmit}>
