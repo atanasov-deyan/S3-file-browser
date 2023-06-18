@@ -7,11 +7,11 @@ type SizeType = 'small' | 'middle' | 'large';
 type ButtonHTMLType = 'submit' | 'button' | 'reset'
 type ButtonType = 'default' | 'primary' | 'ghost'
 
-export interface IButtonProps extends Omit<ComponentProps<'button'>, "type"> {
+export interface IButtonProps extends Omit<ComponentProps<'button'>, 'type'> {
   onClick?: React.MouseEventHandler;
   size?: SizeType;
   type?: ButtonType;
-  htmlType:  ButtonHTMLType,
+  htmlType: ButtonHTMLType,
   children: ReactNode,
   loading?: boolean,
 }
@@ -24,6 +24,7 @@ export const Button = ({
   size = 'middle',
   type = 'default',
   // todo: add loading indication, e.g. spinner
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   loading,
   ...rest
 }: IButtonProps) => {
