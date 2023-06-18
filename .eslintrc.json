@@ -10,7 +10,19 @@
   ],
   "rules": {
     "react/prop-types": 0,
-    "react/react-in-jsx-scope": 0
+    "react/react-in-jsx-scope": 0,
+    "comma-dangle": ["warn", "always-multiline"],
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "comma-style": ["error", "last"],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "no-multi-spaces": "warn",
+    "max-len": ["error", 120, {
+      "ignoreUrls": true,
+      "ignoreComments": true,
+      "ignoreRegExpLiterals": true,
+      "ignoreStrings": true,
+      "ignoreTemplateLiterals": true
+    }]
   },
   "plugins": ["react", "import", "jsx-a11y", "@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
