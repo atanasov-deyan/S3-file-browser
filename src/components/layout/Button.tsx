@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react'
+import React, { ComponentProps, ReactNode, useMemo } from 'react'
 
 import styles from './Button.module.css'
 import { toClassName } from '../../utils/toClassName'
@@ -7,15 +7,13 @@ type SizeType = 'small' | 'middle' | 'large';
 type ButtonHTMLType = 'submit' | 'button' | 'reset'
 type ButtonType = 'default' | 'primary' | 'ghost'
 
-export interface IButtonProps {
+export interface IButtonProps extends Omit<ComponentProps<'button'>, "type"> {
   onClick?: React.MouseEventHandler;
   size?: SizeType;
   type?: ButtonType;
   htmlType:  ButtonHTMLType,
   children: ReactNode,
-  className?: string | undefined,
-  disabled?: boolean,
-  loading?: boolean,
+  loading: boolean,
 }
 
 export const Button = ({
