@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import { Header } from './Header'
 
-export const Layout = ({ children }: React.PropsWithChildren) => (
+export const Layout = ({ children }: { children: ReactNode }) => (
   <>
     <Header/>
     <main>

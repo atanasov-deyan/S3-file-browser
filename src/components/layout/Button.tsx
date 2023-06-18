@@ -1,18 +1,18 @@
-import React, { ReactElement, useMemo } from 'react'
+import React, { ReactNode, useMemo } from 'react'
 
 import styles from './Button.module.css'
 import { toClassName } from '../../utils/toClassName'
 
-declare type SizeType = 'small' | 'middle' | 'large';
-declare type ButtonHTMLType = 'submit' | 'button' | 'reset'
-declare type ButtonType = 'default' | 'primary' | 'ghost'
-// todo: add proper typing
-interface IButtonProps {
+type SizeType = 'small' | 'middle' | 'large';
+type ButtonHTMLType = 'submit' | 'button' | 'reset'
+type ButtonType = 'default' | 'primary' | 'ghost'
+
+export interface IButtonProps {
   onClick?: React.MouseEventHandler;
   size?: SizeType;
   type?: ButtonType;
   htmlType:  ButtonHTMLType,
-  children: ReactElement | string,
+  children: ReactNode,
   className?: string | undefined,
   disabled?: boolean,
   loading?: boolean,
