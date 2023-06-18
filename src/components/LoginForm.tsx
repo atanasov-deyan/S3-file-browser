@@ -1,36 +1,42 @@
 import React from 'react';
 
-import styles from './LoginForm.module.css'
 import { Button } from './layout/Button';
+import { IFormField, loginFormFields } from '../config/loginFormFields';
+
+import styles from './LoginForm.module.css'
 
 export const LoginForm = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const formData = new FormData(event.currentTarget)
+    const fieldValues = Object.fromEntries(formData.entries())
 
-    console.log(event.currentTarget.elements)
-    return
-    const accessKeyId = event.currentTarget.elements.accessKeyId.value;
-    const secretAccessKey = event.currentTarget.elements.secretAccessKey.value;
-    const bucketName = event.currentTarget.elements.bucketName.value;
-
+    console.log(fieldValues)
   };
   // todo: abstract Form and Input into layout components
   return (
     <section className={styles['form-container']}>
       <form onSubmit={handleSubmit}>
         <ul className={styles['items-list']}>
-          <li className={styles.item}>
-            <label className={styles.label} htmlFor="accessKeyId">Access Key ID:</label>
-            <input className={styles.input} type="text" id="accessKeyId" required placeholder='Enter access key id...'/>
+          {loginFormFields.map((field: IFormField) => (
+            <li className={styles.item} key={field.name}>
+              <label
+                className={styles.label}
+                htmlFor={`${field.name}-field`}>
+                  {field.label}:
+              </label>
+
+              <input
+                className={styles.input}
+                type={field.type}
+                id={`${field.name}-field`}
+                name={field.name}
+                required={field.required}
+                placeholder={field.placeholder}
+              />
           </li>
-          <li className={styles.item}>
-            <label className={styles.label} htmlFor="secretAccessKey">Secret Access Key:</label>
-            <input className={styles.input} type="password" id="secretAccessKey" required placeholder='Enter secret access key...'/>
-          </li>
-          <li className={styles.item}>
-            <label className={styles.label} htmlFor="bucketName">Bucket Name:</label>
-            <input className={styles.input} type="text" id="bucketName" required placeholder='Enter bucket name...'/>
-          </li>
+          ))}
+
           <li className={styles.item}>
             <Button
               htmlType="submit"
