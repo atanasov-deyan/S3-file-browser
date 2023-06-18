@@ -6,14 +6,14 @@ import { Routes } from './Routes';
 const MOUNT_NODE = document.getElementById('root');
 
 if (!MOUNT_NODE) {
-  throw new Error("no container to render to");
+  throw new Error('no container to render to');
 }
 
 const root = createRoot(MOUNT_NODE)
 
 const render = () => {
   root.render(
-    <Routes/>
+    <Routes/>,
   )
 }
 
