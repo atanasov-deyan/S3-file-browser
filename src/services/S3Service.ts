@@ -2,7 +2,6 @@ import AWS, { S3, AWSError } from 'aws-sdk';
 
 const region = 'eu-central-1'
 
-// todo: transform into an IIFE
 class S3Service {
   #s3: S3 | null = null;
   #bucketName: string | null = null
