@@ -1,12 +1,11 @@
 import AWS, { S3, AWSError } from 'aws-sdk';
 
-const region = 'eu-central-1'
-
 class S3Service {
   #s3: S3 | null = null;
   #bucketName: string | null = null
+  #region = 'eu-central-1'
   constructor() {
-    AWS.config.update({ region });
+    AWS.config.update({ region: this.#region });
   }
 
   async #validateCredentials(): Promise<boolean> {
@@ -38,7 +37,7 @@ class S3Service {
         secretAccessKey: secretAccessKey,
       },
     });
-    this.#s3 = new AWS.S3({ region });
+    this.#s3 = new AWS.S3({ region: this.#region });
     this.#bucketName = bucketName;
     await this.#validateCredentials();
   }
