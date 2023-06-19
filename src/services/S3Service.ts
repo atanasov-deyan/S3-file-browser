@@ -1,4 +1,5 @@
 import AWS, { S3, AWSError } from 'aws-sdk';
+import { ListObjectsV2Output } from 'aws-sdk/clients/s3';
 
 class S3Service {
   #s3: S3 | null = null;
@@ -42,7 +43,7 @@ class S3Service {
     await this.#validateCredentials();
   }
 
-  async listObjects(prefix?: string): Promise<S3.Object[]> {
+  async listObjects(prefix?: string): Promise<ListObjectsV2Output | AWSError> {
     if (!this.#bucketName || !this.#s3) {
       throw new Error('S3 service not configured. Please call configureS3 method first.');
     }
@@ -52,14 +53,8 @@ class S3Service {
       Prefix: prefix,
     };
 
-    try {
-      const response = await this.#s3.listObjectsV2(params).promise();
+    return await this.#s3.listObjectsV2(params).promise();
 
-      return response?.Contents || [];
-    } catch (error) {
-      console.error('Error occurred while listing objects:', error as AWSError);
-      return [];
-    }
   }
 
   async createObject(key: string, content: string): Promise<void> {
