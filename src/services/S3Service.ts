@@ -54,7 +54,7 @@ class S3Service {
 
     try {
       const response = await this.#s3.listObjectsV2(params).promise();
-      console.log(response)
+
       return response?.Contents || [];
     } catch (error) {
       console.error('Error occurred while listing objects:', error as AWSError);
@@ -102,5 +102,5 @@ class S3Service {
 }
 
 const s3Service = new S3Service();
-console.log(s3Service)
+
 export { s3Service }
