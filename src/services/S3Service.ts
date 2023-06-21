@@ -23,9 +23,7 @@ class S3Service {
       MaxKeys: 1, // Fetch only one object
 
     };
-      const res = await this.#s3.listObjectsV2(params).promise();
-      console.log(res);
-
+      await this.#s3.listObjectsV2(params).promise();
   }
 
   async configureS3(credentials: AWSCredentials): Promise<void> {

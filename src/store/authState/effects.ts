@@ -4,6 +4,8 @@ import { AWSCredentials } from '../../definitions/AWSCredentials';
 import { s3Service } from '../../services/S3Service';
 import { dispatch } from '../storeFacade';
 import { authFailure, authRequest, authSuccess } from './reducer';
+import { parseError } from '../../utils/parseError';
+import { AWSError } from 'aws-sdk';
 
 
 export const authenticate = async (credentials: AWSCredentials, navigate: NavigateFunction): Promise<void> => {
@@ -14,9 +16,7 @@ export const authenticate = async (credentials: AWSCredentials, navigate: Naviga
     dispatch(authSuccess());
     navigate('/');
   } catch (e) {
-    const error: unknown = JSON.parse(JSON.stringify(await e));
-
-    dispatch(authFailure(error));
+    dispatch(authFailure(parseError(e as AWSError)));
     navigate('/login');
   }
 };

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Dictionary } from '../../definitions/Dictionary';
+import { NetworkResponseFailure } from '../../definitions/NetworkResponse';
 
 interface AnyAction {
   type: string,
@@ -13,9 +14,7 @@ interface NetworkState {
 }
 
 export const initialNetworkState: NetworkState = {
-  loading: {
-    'auth/auth': true,
-  },
+  loading: {},
   errors: {},
 };
 
