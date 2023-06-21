@@ -13,14 +13,14 @@ if (!MOUNT_NODE) {
   throw new Error('no container to render to');
 }
 
-const root = createRoot(MOUNT_NODE)
+const root = createRoot(MOUNT_NODE);
 
 const render = () => {
   root.render(
     <Provider store={store}>
       <Routes/>
     </Provider>,
-  )
-}
+  );
+};
 
-render()
+render();

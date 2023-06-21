@@ -17,24 +17,24 @@ export const initialNetworkState: NetworkState = {
     'auth/auth': true,
   },
   errors: {},
-}
+};
 
 
-const isRequestAction = (action: AnyAction): boolean => !!action.type && action.type.endsWith('Request')
+const isRequestAction = (action: AnyAction): boolean => !!action.type && action.type.endsWith('Request');
 
-const isSuccessAction = (action: AnyAction): boolean => !!action.type && action.type.endsWith('Success')
+const isSuccessAction = (action: AnyAction): boolean => !!action.type && action.type.endsWith('Success');
 
-const isFailureAction = (action: AnyAction): boolean => !!action.type && action.type.endsWith('Failure')
+const isFailureAction = (action: AnyAction): boolean => !!action.type && action.type.endsWith('Failure');
 
 
 const getRequestName = (action: AnyAction) => {
-  const matches = /(.*)(Request|Success|Failure)/.exec(action.type)
+  const matches = /(.*)(Request|Success|Failure)/.exec(action.type);
   if (matches) {
-    const [, requestName] = matches
-    return requestName
+    const [, requestName] = matches;
+    return requestName;
   }
-  return ''
-}
+  return '';
+};
 
 const networkStateSlice = createSlice({
   name: 'networkState',
@@ -42,29 +42,29 @@ const networkStateSlice = createSlice({
   initialState: initialNetworkState,
   reducers: {
     resetErrors: state => {
-      state.errors = {}
+      state.errors = {};
     },
   },
   extraReducers: builder => {
     builder.addMatcher(isRequestAction, (state, action: AnyAction) => {
-      const requestName = getRequestName(action)
-      state.loading[requestName] = true
-    })
+      const requestName = getRequestName(action);
+      state.loading[requestName] = true;
+    });
     builder.addMatcher(isSuccessAction, (state, action: AnyAction) => {
-      const requestName = getRequestName(action)
-      state.errors[requestName] = undefined
-      state.loading[requestName] = false
-    })
+      const requestName = getRequestName(action);
+      state.errors[requestName] = undefined;
+      state.loading[requestName] = false;
+    });
     builder.addMatcher(isFailureAction, (state, action: PayloadAction<unknown>) => {
-      const requestName = getRequestName(action)
-      state.errors[requestName] = action.payload
-      state.loading[requestName] = false
-    })
+      const requestName = getRequestName(action);
+      state.errors[requestName] = action.payload;
+      state.loading[requestName] = false;
+    });
   },
-})
+});
 
 export const {
   resetErrors,
-} = networkStateSlice.actions
+} = networkStateSlice.actions;
 
-export const networkStateReducer = networkStateSlice.reducer
+export const networkStateReducer = networkStateSlice.reducer;

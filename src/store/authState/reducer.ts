@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { noop } from '../../utils/noop'
-import { requestFailureActionReducer } from '../requestFailureActionCreator'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+
+import { noop } from '../../utils/noop';
 
 interface IAuthState {
   isAuthorized: boolean
@@ -8,7 +8,7 @@ interface IAuthState {
 
 const initialState: IAuthState = {
   isAuthorized: false,
-}
+};
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -16,12 +16,15 @@ export const authSlice = createSlice({
   reducers: {
     authRequest: noop,
     authSuccess: (state) => {
-      state.isAuthorized = true
+      state.isAuthorized = true;
     },
-    authFailure: requestFailureActionReducer,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    authFailure: (state, action: PayloadAction<unknown>) => {
+      state.isAuthorized = false;
+    },
   },
-})
+});
 
-export const { authRequest, authSuccess, authFailure } = authSlice.actions
+export const { authRequest, authSuccess, authFailure } = authSlice.actions;
 
-export const authStateReducer = authSlice.reducer
+export const authStateReducer = authSlice.reducer;

@@ -1,8 +1,8 @@
-import React from 'react'
-import { Route, BrowserRouter, Routes as RouterRoutes } from 'react-router-dom'
+import React from 'react';
+import { Route, BrowserRouter, Routes as RouterRoutes } from 'react-router-dom';
 
-import { LoginPage } from './components/pages/LoginPage'
-import { HomePage } from './components/pages/HomePage'
+import { LoginPage } from './components/pages/LoginPage';
+import { HomePage } from './components/pages/HomePage';
 
 export const Routes = () => (
   <BrowserRouter>
@@ -18,4 +18,4 @@ export const Routes = () => (
       />
     </RouterRoutes>
   </BrowserRouter>
-)
+);

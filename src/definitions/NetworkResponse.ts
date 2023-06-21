@@ -1,4 +1,4 @@
-import { Dictionary } from './Dictionary'
+import { Dictionary } from './Dictionary';
 
 export interface NetworkResponseSuccess {
   body?: ReadableStream

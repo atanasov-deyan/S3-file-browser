@@ -1,7 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit';
 
-import { authStateReducer } from './authState/reducer'
-import { networkStateReducer } from './networkState/reducer'
+import { authStateReducer } from './authState/reducer';
+import { networkStateReducer } from './networkState/reducer';
 
 const store = configureStore({
   reducer: {

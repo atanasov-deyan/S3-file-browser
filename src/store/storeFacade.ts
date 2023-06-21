@@ -1,7 +1,8 @@
-import { AnyAction } from '@reduxjs/toolkit'
-import store from './index'
-import { shallowEqual } from 'react-redux'
-import { useAppSelector } from './hooks'
+import { AnyAction } from '@reduxjs/toolkit';
+import { shallowEqual } from 'react-redux';
+
+import store from './index';
+import { useAppSelector } from './hooks';
 
 export const dispatch = (action: AnyAction): void => {
   store.dispatch(action);
