@@ -1,5 +1,5 @@
 # S3 bucket browser
-Solution to the lucidlink FE engineer assignment. Full requirements can be found [here](https://github.com/nvm-sh/nvm)
+Solution to the lucidlink FE engineer assignment. Full requirements can be found [here](https://github.com/atanasov-deyan/S3-file-browser/blob/main/requirements.pdf)
 
 
 ## Installation
