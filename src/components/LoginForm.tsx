@@ -19,7 +19,7 @@ export const LoginForm = () => {
     const fieldValues = Object.fromEntries(formData.entries());
     const { accessKeyId, secretAccessKey, bucketName } = fieldValues;
 
-    // make ts stop complaining - look into smarter ways of handling this
+    // look into smarter ways of handling this
     if (typeof accessKeyId !== 'string' || typeof secretAccessKey !== 'string' || typeof bucketName !== 'string') {
       return;
     }
@@ -42,7 +42,7 @@ export const LoginForm = () => {
 
               <input
                 className={styles.input}
-                type={'text'}
+                type={field.type}
                 id={`${field.name}-field`}
                 name={field.name}
                 required={field.required}
