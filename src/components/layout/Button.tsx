@@ -2,6 +2,7 @@ import React, { ComponentProps, ReactNode, useMemo } from 'react';
 
 import styles from './Button.module.css';
 import { toClassName } from '../../utils/toClassName';
+import { Spin } from './Spin';
 
 type SizeType = 'small' | 'middle' | 'large';
 type ButtonHTMLType = 'submit' | 'button' | 'reset'
@@ -23,8 +24,6 @@ export const Button = ({
   onClick,
   size = 'middle',
   type = 'default',
-  // todo: add loading indication, e.g. spinner
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   loading,
   ...rest
 }: IButtonProps) => {
@@ -48,6 +47,7 @@ export const Button = ({
       type={htmlType}
       {...rest}
     >
+      <Spin spin={loading} size={32}/>
       {children}
     </button>
   );
