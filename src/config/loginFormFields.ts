@@ -6,7 +6,7 @@ const accessKeyIdField: IFormField = {
   placeholder: 'Enter access key id...',
   label: 'Access Key ID',
   type: 'text',
-}
+};
 
 const secretAccessKeyField: IFormField = {
   name: 'secretAccessKey',
@@ -14,7 +14,7 @@ const secretAccessKeyField: IFormField = {
   placeholder: 'Enter secret access key...',
   label: 'Secret Access Key',
   type: 'password',
-}
+};
 
 const bucketNameField: IFormField = {
   name: 'bucketName',
@@ -22,11 +22,11 @@ const bucketNameField: IFormField = {
   placeholder: 'Enter bucket name...',
   label: 'Bucket Name',
   type: 'text',
-}
+};
 
 
 export const loginFormFields: IFormField[] = [
   accessKeyIdField,
   secretAccessKeyField,
   bucketNameField,
-]
+];

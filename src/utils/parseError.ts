@@ -1,6 +1,6 @@
 import { AWSError } from 'aws-sdk';
 
-interface ParsedError {
+export interface IParsedError {
   code?: string;
   message?: string;
   requestId?: string;
@@ -10,7 +10,7 @@ interface ParsedError {
   time?: string;
 }
 
-export const parseError = (error: AWSError): ParsedError => {
+export const parseError = (error: AWSError): IParsedError => {
   const err = Object.assign({}, error);
 
   return {

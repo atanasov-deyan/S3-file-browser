@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Dictionary } from '../../definitions/Dictionary';
 import { NetworkResponseFailure } from '../../definitions/NetworkResponse';
+import { IParsedError } from '../../utils/parseError';
 
 interface AnyAction {
   type: string,
@@ -54,7 +55,7 @@ const networkStateSlice = createSlice({
       state.errors[requestName] = undefined;
       state.loading[requestName] = false;
     });
-    builder.addMatcher(isFailureAction, (state, action: PayloadAction<unknown>) => {
+    builder.addMatcher(isFailureAction, (state, action: PayloadAction<IParsedError>) => {
       const requestName = getRequestName(action);
       state.errors[requestName] = action.payload;
       state.loading[requestName] = false;
