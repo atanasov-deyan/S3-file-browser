@@ -1,4 +1,5 @@
 :root {
+  /* colors */
   --white: #ffffff;
   --black: #000000;
   --athens-grey: #F9FAFB;
@@ -12,4 +13,11 @@
   --hawkes-blue: #D2E2FE;
   --coral: #FF8042;
   --laurel-green: #0cab00;
+  --valencia: #d93a39;
+  /* font-sizes */
+
+  --font-size-small: 12px;
+  --font-size-medium: 14px;
+  --font-size-large: 16px;
+  --font-size-x-large: 18px;
 }

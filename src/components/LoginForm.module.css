@@ -27,6 +27,6 @@
   padding: 8px;
   border-radius: 6px;
   border: 1px solid var(--silver);
-  font-size: 18px;
+  font-size: var(--font-size-x-large);
   color: var(--black);
 }

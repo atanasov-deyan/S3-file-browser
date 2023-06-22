@@ -11,7 +11,7 @@ interface AnyAction {
 
 interface NetworkState {
   loading: Dictionary<boolean>
-  errors: Dictionary<NetworkResponseFailure | undefined>
+  errors: Dictionary<IParsedError | undefined>
 }
 
 export const initialNetworkState: NetworkState = {

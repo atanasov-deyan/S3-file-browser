@@ -1,8 +1,8 @@
 import { AWSError } from 'aws-sdk';
 
 export interface IParsedError {
-  code?: string;
-  message?: string;
+  code: string;
+  message: string;
   requestId?: string;
   statusCode?: number;
   retryable?: boolean;

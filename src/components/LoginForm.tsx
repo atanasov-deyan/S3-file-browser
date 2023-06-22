@@ -4,13 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from './layout/Button';
 import { loginFormFields } from '../config/loginFormFields';
 import { authenticate } from '../store/authState/effects';
-import { useLoadingState } from '../store/storeFacade';
+import { useErrorState, useLoadingState } from '../store/storeFacade';
 import { IFormField } from '../definitions/FormField';
 
 import styles from './LoginForm.module.css';
+import { ErrorMessage } from './layout/ErrorMessage';
 
 export const LoginForm = () => {
   const isLoading = useLoadingState('auth/auth');
+  const authError = useErrorState('auth/auth');
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -60,6 +62,12 @@ export const LoginForm = () => {
             >
               Login
             </Button>
+          </li>
+          <li className={styles.item}>
+            <ErrorMessage
+              showError={!!authError && !isLoading}
+              error={authError}
+            />
           </li>
         </ul>
       </form>

@@ -1,0 +1,5 @@
+@import '../../css/vars.css';
+
+.error-message {
+  color: var(--valencia);
+}
