@@ -1,10 +1,10 @@
-import './init'
+import './init';
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 
-import { Routes } from './Routes';
+import { Routes } from './components/pages/Routes';
 import store from './store';
 
 const MOUNT_NODE = document.getElementById('root');

@@ -9,6 +9,11 @@ export const dispatch = (action: AnyAction): void => {
   store.dispatch(action);
 };
 
+export const useNetworkState = () => useAppSelector(
+  state => state.networkState,
+  shallowEqual,
+);
+
 export const useLoadingState = (actionName: string): boolean => useAppSelector(
   (state) => state.networkState.loading[actionName],
   shallowEqual,
