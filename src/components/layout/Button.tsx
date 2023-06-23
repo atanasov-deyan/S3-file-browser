@@ -1,7 +1,8 @@
-import React, { ComponentProps, ReactNode, useMemo } from 'react'
+import React, { ComponentProps, ReactNode, useMemo } from 'react';
 
-import styles from './Button.module.css'
-import { toClassName } from '../../utils/toClassName'
+import styles from './Button.module.css';
+import { toClassName } from '../../utils/toClassName';
+import { Spin } from './Spin';
 
 type SizeType = 'small' | 'middle' | 'large';
 type ButtonHTMLType = 'submit' | 'button' | 'reset'
@@ -23,22 +24,20 @@ export const Button = ({
   onClick,
   size = 'middle',
   type = 'default',
-  // todo: add loading indication, e.g. spinner
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   loading,
   ...rest
 }: IButtonProps) => {
   const classNames = useMemo(() => {
-    const typeClass = styles[`button-${type}`]
-    const sizeClass = styles[`button-${size}`]
+    const typeClass = styles[`button-${type}`];
+    const sizeClass = styles[`button-${size}`];
 
     return toClassName([
       styles.button,
       typeClass,
       sizeClass,
       className,
-    ])
-  }, [className, type, size])
+    ]);
+  }, [className, type, size]);
 
 
   return (
@@ -48,7 +47,8 @@ export const Button = ({
       type={htmlType}
       {...rest}
     >
+      <Spin spin={loading} size={32}/>
       {children}
     </button>
-  )
-}
+  );
+};

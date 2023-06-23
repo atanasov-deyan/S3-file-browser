@@ -1,40 +1,38 @@
 import AWS, { S3, AWSError } from 'aws-sdk';
+import { ListObjectsV2Output } from 'aws-sdk/clients/s3';
+import { AWSCredentials } from '../definitions/AWSCredentials';
 
 class S3Service {
   #s3: S3 | null = null;
-  #bucketName: string | null = null
-  #region = 'eu-central-1'
+  #bucketName: string | null = null;
+  #region = 'eu-central-1';
   constructor() {
-    AWS.config.update({ region: this.#region });
+    AWS.config.update({
+      region: this.#region,
+      maxRetries: 1,
+    });
   }
-
-  async #validateCredentials(): Promise<boolean> {
+  async #validateCredentials(): Promise<void> {
     if (!this.#bucketName || !this.#s3) {
       throw new Error('S3 service not configured. Please call configureS3 method first.');
     }
 
-    try {
       // Test the credentials by making a simple API request to AWS
-      const params: S3.ListObjectsV2Request = {
-        Bucket: this.#bucketName,
-        MaxKeys: 1, // Fetch only one object
-      };
+    const params: S3.ListObjectsV2Request = {
+      Bucket: this.#bucketName,
+      MaxKeys: 1, // Fetch only one object
 
+    };
       await this.#s3.listObjectsV2(params).promise();
-
-      return true; // Credentials are valid
-    } catch (error) {
-      console.log(error)
-      console.error('Error occurred while validating AWS credentials:', error as AWSError);
-      return false; // Credentials are invalid
-    }
   }
 
-  async configureS3(accessKeyId: string, secretAccessKey: string, bucketName: string): Promise<void> {
+  async configureS3(credentials: AWSCredentials): Promise<void> {
+    const { accessKeyId, secretAccessKey, bucketName } = credentials;
+
     AWS.config.update({
       credentials: {
-        accessKeyId: accessKeyId,
-        secretAccessKey: secretAccessKey,
+        accessKeyId,
+        secretAccessKey,
       },
     });
     this.#s3 = new AWS.S3({ region: this.#region });
@@ -42,7 +40,7 @@ class S3Service {
     await this.#validateCredentials();
   }
 
-  async listObjects(prefix?: string): Promise<S3.Object[]> {
+  async listObjects(prefix?: string): Promise<ListObjectsV2Output | AWSError> {
     if (!this.#bucketName || !this.#s3) {
       throw new Error('S3 service not configured. Please call configureS3 method first.');
     }
@@ -52,14 +50,8 @@ class S3Service {
       Prefix: prefix,
     };
 
-    try {
-      const response = await this.#s3.listObjectsV2(params).promise();
+    return await this.#s3.listObjectsV2(params).promise();
 
-      return response?.Contents || [];
-    } catch (error) {
-      console.error('Error occurred while listing objects:', error as AWSError);
-      return [];
-    }
   }
 
   async createObject(key: string, content: string): Promise<void> {
@@ -103,4 +95,4 @@ class S3Service {
 
 const s3Service = new S3Service();
 
-export { s3Service }
+export { s3Service };

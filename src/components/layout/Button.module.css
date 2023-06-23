@@ -13,17 +13,17 @@
 }
 
 .button-small {
-  font-size: 12px;
+  font-size: var(--font-size-small);
   height: 24px;
 }
 
 .button-middle {
-  font-size: 14px;
+  font-size: var(--font-size-medium);
   height: 32px;
 }
 
 .button-large {
-  font-size: 16px;
+  font-size: var(--font-size-large);
   height: 46px;
 }
 
