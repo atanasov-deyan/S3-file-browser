@@ -9,12 +9,10 @@ export const GuardUnauthorized = ({ children }: PropsWithChildren) => {
   const { errors } = useNetworkState();
 
   const unauthorizedErrors = Object.values(errors)
-    .filter(Boolean)
-    .filter(error => error?.statusCode === 401)
-    .filter(error => error?.statusCode === 403);
+    .filter(error => error?.statusCode === 401 || error?.statusCode === 403)
 
   useEffect(() => {
-    if (!isAuthorized || unauthorizedErrors) {
+    if (!isAuthorized || !!unauthorizedErrors.length) {
       navigate('/login');
     }
   }, [isAuthorized, navigate, unauthorizedErrors]);
