@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route, BrowserRouter, Routes as RouterRoutes } from 'react-router-dom';
 
-import { LoginPage } from './components/pages/LoginPage';
-import { HomePage } from './components/pages/HomePage';
+import { LoginPage } from './LoginPage';
+import { HomePage } from './HomePage';
+import { GuardUnauthorized } from './GuardUnauthorized';
 
 export const Routes = () => (
   <BrowserRouter>
@@ -14,7 +15,11 @@ export const Routes = () => (
 
       <Route
         path='/'
-        element={<HomePage/>}
+        element={
+        <GuardUnauthorized>
+          <HomePage/>
+        </GuardUnauthorized>
+      }
       />
     </RouterRoutes>
   </BrowserRouter>
