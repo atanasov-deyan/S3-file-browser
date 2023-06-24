@@ -1,13 +1,13 @@
-import React, { MouseEvent, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 
 import { useFilesState } from '../store/storeFacade';
 import { Icon } from './layout/Icon';
 import { Button } from './layout/Button';
 import { isFile } from '../utils/fileSystem';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ROOT_DIR_NAME } from '../config';
 
 import styles from './LeftSidebarFolder.module.css';
-import { ROOT_DIR_NAME } from '../config';
 
 interface ILeftSidebarFolderProps {
   name: string;

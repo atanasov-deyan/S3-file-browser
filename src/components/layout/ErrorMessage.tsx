@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { IParsedError } from '../../utils/parseError';
 
 import style from './ErrorMessage.module.css';

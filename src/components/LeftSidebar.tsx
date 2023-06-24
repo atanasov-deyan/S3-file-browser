@@ -1,8 +1,6 @@
-import React from 'react';
 import { useFilesState } from '../store/storeFacade';
 import { isFile } from '../utils/fileSystem';
 import { Sidebar } from './layout/Sidebar';
-import { Icon } from './layout/Icon';
 import { ROOT_DIR_NAME } from '../config';
 import { LeftSidebarFolder } from './LeftSidebarFolder';
 

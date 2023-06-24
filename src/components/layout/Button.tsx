@@ -1,4 +1,4 @@
-import React, { ComponentProps, ReactNode, useMemo } from 'react';
+import { ComponentProps, ReactNode, useMemo } from 'react';
 
 import styles from './Button.module.css';
 import { toClassName } from '../../utils/toClassName';
