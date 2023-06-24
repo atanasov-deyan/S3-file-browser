@@ -23,7 +23,16 @@
       "ignoreStrings": true,
       "ignoreTemplateLiterals": true
     }],
-    "semi": ["warn", "always"]
+    "semi": ["warn", "always"],
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          "Object": false
+        },
+        "extendDefaults": true
+      }
+    ]
   },
   "plugins": ["react", "import", "jsx-a11y", "@typescript-eslint"],
   "parser": "@typescript-eslint/parser",

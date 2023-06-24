@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route, BrowserRouter, Routes as RouterRoutes } from 'react-router-dom';
 
 import { LoginPage } from './LoginPage';
@@ -14,7 +13,7 @@ export const Routes = () => (
       />
 
       <Route
-        path='/'
+        path='/*'
         element={
         <GuardUnauthorized>
           <HomePage/>

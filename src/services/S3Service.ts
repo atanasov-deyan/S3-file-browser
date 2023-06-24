@@ -40,7 +40,7 @@ class S3Service {
     await this.#validateCredentials();
   }
 
-  async listObjects(prefix?: string): Promise<ListObjectsV2Output | AWSError> {
+  async listObjects(prefix?: string): Promise<ListObjectsV2Output> {
     if (!this.#bucketName || !this.#s3) {
       throw new Error('S3 service not configured. Please call configureS3 method first.');
     }

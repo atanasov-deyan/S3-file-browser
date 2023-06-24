@@ -1,5 +1,3 @@
-import React from 'react';
-
 import spinner from '../../../public/images/spinner.svg';
 
 interface ISpinProps {
