@@ -3,7 +3,7 @@ import { MouseEventHandler } from 'react';
 import { Icon } from './layout/Icon';
 import { Button } from './layout/Button';
 
-import styles from './LeftSidebarFolder.module.css';
+import styles from './NavFolderAction.module.css';
 
 interface INavFolderActionProps {
   onClick: MouseEventHandler;
@@ -29,7 +29,7 @@ export const NavFolderAction = ({
       onClick={onClick}
       className={isFolderSelected ? styles['active-button'] : ''}
     >
-      <div className={styles['folder-container']}>
+      <div className={styles['folder-name']}>
         {!!hasSubFolders && (
           <>
             <Icon name={angleIconName}/>

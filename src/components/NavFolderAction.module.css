@@ -1,0 +1,10 @@
+@import '../css/vars.css';
+
+.folder-name {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.active-button {
+  color: var(--white);
+}

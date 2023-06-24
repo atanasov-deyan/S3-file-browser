@@ -4,10 +4,10 @@ import { useFilesState } from '../store/storeFacade';
 import { isFile } from '../utils/fileSystem';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ROOT_DIR_NAME } from '../config';
-
-import styles from './LeftSidebarFolder.module.css';
 import { NavFolderList } from './NavFolderList';
 import { NavFolderAction } from './NavFolderAction';
+
+import styles from './NavFolder.module.css';
 
 interface INavFolderProps {
   name: string;
@@ -71,7 +71,7 @@ export const NavFolder = ({ name, parentPath }: INavFolderProps) => {
       </li>
 
       {isExpanded && (
-        <NavFolderList className={styles['folder-children']} folderPath={path}/>
+        <NavFolderList className={styles['sub-folder']} folderPath={path}/>
       )}
     </>
   );

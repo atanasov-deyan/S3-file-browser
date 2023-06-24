@@ -1,0 +1,10 @@
+@import '../css/vars.css';
+
+.sub-folders {
+  margin-left: 16px;
+}
+
+.active {
+  background-color: var(--blue-ribbon);
+  border-radius: 4px;
+}
