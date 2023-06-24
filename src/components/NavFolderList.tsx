@@ -1,6 +1,6 @@
 import { useFilesState } from '../store/storeFacade';
 import { isFile } from '../utils/fileSystem';
-import { LeftSidebarFolder } from './LeftSidebarFolder';
+import { NavFolder } from './NavFolder';
 
 interface INavFolderListProps {
   className?: string;
@@ -14,8 +14,8 @@ export const NavFolderList = ({ className, folderPath }: INavFolderListProps) =>
 
   return !!folders && (
     <ul className={className}>
-      {folders.map(entry => (
-        <LeftSidebarFolder key={entry} name={entry} parentPath={folderPath}/>
+      {folders.map(folderName => (
+        <NavFolder key={folderName} name={folderName} parentPath={folderPath}/>
       ))}
     </ul>
   );

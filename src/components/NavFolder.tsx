@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useMemo, useState } from 'react';
 
 import { useFilesState } from '../store/storeFacade';
 import { Icon } from './layout/Icon';
@@ -8,21 +8,22 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ROOT_DIR_NAME } from '../config';
 
 import styles from './LeftSidebarFolder.module.css';
+import { NavFolderList } from './NavFolderList';
 
 interface ILeftSidebarFolderProps {
   name: string;
   parentPath: string;
 }
 
-const getFolders = (folderChildren: string[]|undefined): string[]|undefined => {
-  if (!folderChildren) {
-    return;
+const getFolders = (folderContent: string[]|undefined): string[] => {
+  if (!folderContent) {
+    return [];
   }
 
-  return folderChildren.filter((entry: string) => !isFile(entry));
+  return folderContent.filter((entry: string) => !isFile(entry));
 };
 
-export const LeftSidebarFolder = ({ name, parentPath }: ILeftSidebarFolderProps) => {
+export const NavFolder = ({ name, parentPath }: ILeftSidebarFolderProps) => {
   const { filesTree } = useFilesState();
   const [isExpanded, setExpanded] = useState(false);
   const navigate = useNavigate();
@@ -30,7 +31,11 @@ export const LeftSidebarFolder = ({ name, parentPath }: ILeftSidebarFolderProps)
 
   const path = parentPath === ROOT_DIR_NAME ? `/${name}` : `${parentPath}/${name}`;
 
-  const folderChildren = getFolders(filesTree[path]);
+  const subFolders = useMemo(
+    () => getFolders(filesTree[path]),
+    [filesTree, path],
+  );
+
   const iconName = isExpanded ? 'angle-down' : 'angle-right';
   const folderIconName = isExpanded ? 'folder-open-o' : 'folder-o';
   const isFolderSelected = pathname === path;
@@ -38,8 +43,8 @@ export const LeftSidebarFolder = ({ name, parentPath }: ILeftSidebarFolderProps)
   const handleClick = (e: MouseEvent): void => {
     switch (e.detail) {
       case 1: {
-        // user clicking on folder without any children to visualize should not result in expanding it
-        if (folderChildren?.length) {
+        // only expand if there are sub-folders to display
+        if (subFolders.length) {
           setExpanded(!isExpanded);
         }
         return;
@@ -65,7 +70,7 @@ export const LeftSidebarFolder = ({ name, parentPath }: ILeftSidebarFolderProps)
         className={isFolderSelected ? styles['active-button'] : ''}
         >
           <div className={styles['folder-container']}>
-            {!!folderChildren?.length && (
+            {!!subFolders.length && (
               <>
                 <Icon name={iconName}/>
                 &nbsp;
@@ -78,12 +83,8 @@ export const LeftSidebarFolder = ({ name, parentPath }: ILeftSidebarFolderProps)
         </Button>
       </li>
 
-        {(!!folderChildren && isExpanded) && (
-          <ul className={styles['folder-children']}>
-            {folderChildren.map(childName => (
-              <LeftSidebarFolder key={childName} name={childName} parentPath={path}/>
-            ))}
-          </ul>
+        {isExpanded && (
+          <NavFolderList className={styles['folder-children']} folderPath={path}/>
         )}
     </>
   );
