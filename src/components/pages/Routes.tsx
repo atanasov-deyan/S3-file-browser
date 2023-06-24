@@ -14,7 +14,7 @@ export const Routes = () => (
       />
 
       <Route
-        path='/'
+        path='/*'
         element={
         <GuardUnauthorized>
           <HomePage/>

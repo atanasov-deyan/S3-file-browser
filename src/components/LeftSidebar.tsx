@@ -4,6 +4,7 @@ import { isFile } from '../utils/fileSystem';
 import { Sidebar } from './layout/Sidebar';
 import { Icon } from './layout/Icon';
 import { ROOT_DIR_NAME } from '../config';
+import { LeftSidebarFolder } from './LeftSidebarFolder';
 
 export const LeftSidebar = () => {
   const { filesTree } = useFilesState();
@@ -13,10 +14,7 @@ export const LeftSidebar = () => {
     <Sidebar>
       <ul>
         {rootData.filter(entry => !isFile(entry)).map(entry => (
-          <li key={entry}>
-            <Icon name='angle-right'/>
-            {entry}
-          </li>
+          <LeftSidebarFolder key={entry} name={entry} parentPath={ROOT_DIR_NAME}/>
         ))}
       </ul>
     </Sidebar>

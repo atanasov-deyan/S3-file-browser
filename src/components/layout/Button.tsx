@@ -12,7 +12,7 @@ export interface IButtonProps extends Omit<ComponentProps<'button'>, 'type'> {
   onClick?: React.MouseEventHandler;
   size?: SizeType;
   type?: ButtonType;
-  htmlType: ButtonHTMLType,
+  htmlType?: ButtonHTMLType,
   children: ReactNode,
   loading?: boolean,
 }

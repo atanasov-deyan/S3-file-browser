@@ -1,6 +1,5 @@
 @import '../../css/vars.css';
 
-
 .button {
   display: flex;
   align-items: center;
@@ -73,5 +72,11 @@
 .button:disabled {
   cursor: not-allowed;
   background-color: var(--ghost);
+  color: var(--silver);
+}
+
+.button-text:disabled {
+  cursor: not-allowed;
+  background-color: transparent;
   color: var(--silver);
 }
