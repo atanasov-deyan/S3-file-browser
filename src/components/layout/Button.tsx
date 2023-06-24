@@ -6,7 +6,7 @@ import { Spin } from './Spin';
 
 type SizeType = 'small' | 'middle' | 'large';
 type ButtonHTMLType = 'submit' | 'button' | 'reset'
-type ButtonType = 'default' | 'primary' | 'ghost'
+type ButtonType = 'default' | 'primary' | 'ghost' | 'text'
 
 export interface IButtonProps extends Omit<ComponentProps<'button'>, 'type'> {
   onClick?: React.MouseEventHandler;
