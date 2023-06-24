@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { toClassName } from '../../utils/toClassName';
+
 import styles from './Icon.module.css';
 
 interface IIconProps {

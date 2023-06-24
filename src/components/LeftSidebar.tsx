@@ -1,24 +1,10 @@
-import React from 'react';
-import { useFilesState } from '../store/storeFacade';
-import { isFile } from '../utils/fileSystem';
+
 import { Sidebar } from './layout/Sidebar';
-import { Icon } from './layout/Icon';
 import { ROOT_DIR_NAME } from '../config';
+import { NavFolderList } from './NavFolderList';
 
-export const LeftSidebar = () => {
-  const { filesTree } = useFilesState();
-  const { [ROOT_DIR_NAME]: rootData } = filesTree;
-
-  return (
-    <Sidebar>
-      <ul>
-        {rootData.filter(entry => !isFile(entry)).map(entry => (
-          <li key={entry}>
-            <Icon name='angle-right'/>
-            {entry}
-          </li>
-        ))}
-      </ul>
-    </Sidebar>
-  );
-};
+export const LeftSidebar = () => (
+  <Sidebar>
+    <NavFolderList folderPath={ROOT_DIR_NAME}/>
+  </Sidebar>
+);

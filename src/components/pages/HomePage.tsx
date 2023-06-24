@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { getAllFiles } from '../../store/filesState/effects';
 import { Layout } from '../layout/Layout';
