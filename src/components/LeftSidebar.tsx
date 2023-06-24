@@ -14,7 +14,7 @@ export const LeftSidebar = () => {
       <ul>
         {rootData.filter(entry => !isFile(entry)).map(entry => (
           <li key={entry}>
-            <Icon name='arrow-down'/>
+            <Icon name='angle-right'/>
             {entry}
           </li>
         ))}
