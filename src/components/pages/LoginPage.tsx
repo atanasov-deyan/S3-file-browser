@@ -8,10 +8,10 @@ export const LoginPage = () => {
 
   return (
     <Layout>
-      <article className={styles.container}>
+      <section className={styles.container}>
         <LoginHeading/>
         <LoginForm/>
-      </article>
+      </section>
     </Layout>
   );
 };
