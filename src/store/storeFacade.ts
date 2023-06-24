@@ -28,3 +28,8 @@ export const useAuthState = () => useAppSelector(
   (state) => state.authState,
   shallowEqual,
 );
+
+export const useFilesState = () => useAppSelector(
+  (state) => state.filesState,
+  shallowEqual,
+);
