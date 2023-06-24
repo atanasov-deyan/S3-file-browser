@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from './layout/Button';
-import { loginFormFields } from '../config/loginFormFields';
+import { loginFormFields } from '../config';
 import { authenticate } from '../store/authState/effects';
 import { useErrorState, useLoadingState } from '../store/storeFacade';
 import { IFormField } from '../definitions/FormField';
