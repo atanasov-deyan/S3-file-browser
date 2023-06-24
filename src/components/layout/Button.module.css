@@ -41,6 +41,11 @@
   color: var(--black);
 }
 
+.button-text {
+  background-color: transparent;
+  color: var(--black);
+}
+
 .button-default:active {
   background-color: var(--hawkes-blue);
 }
