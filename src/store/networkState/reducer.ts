@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Dictionary } from '../../definitions/Dictionary';
-import { NetworkResponseFailure } from '../../definitions/NetworkResponse';
 import { IParsedError } from '../../utils/parseError';
 
 interface AnyAction {

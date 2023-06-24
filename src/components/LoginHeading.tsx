@@ -1,5 +1,3 @@
-import React from 'react';
-
 // todo: move style to css
 export const LoginHeading = () => (
   <>

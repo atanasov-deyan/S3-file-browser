@@ -1,10 +1,8 @@
-import React from 'react'
+import { LoginForm } from '../LoginForm';
+import { LoginHeading } from '../LoginHeading';
 
-import { LoginForm } from '../LoginForm'
-import { LoginHeading } from '../LoginHeading'
-
-import styles from './LoginPage.module.css'
-import { Layout } from '../layout/Layout'
+import styles from './LoginPage.module.css';
+import { Layout } from '../layout/Layout';
 
 export const LoginPage = () => {
 
@@ -15,5 +13,5 @@ export const LoginPage = () => {
         <LoginForm/>
       </article>
     </Layout>
-  )
-}
+  );
+};
