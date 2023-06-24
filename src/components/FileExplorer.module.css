@@ -9,33 +9,3 @@
 .list-item {
   margin-bottom: 16px;
 }
-
-.button {
-  height: auto;
-}
-
-.item {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  margin-right: 4px;
-  min-width: 80px;
-}
-
-.icon {
-  font-size: 32px;
-}
-
-.folder-icon {
-  /* font-size: 36px; */
-  color: var(--blue-ribbon);
-}
-
-.item-name {
-  overflow: hidden;
-  text-align: center;
-  /* overflow-wrap: break-word; */
-  text-overflow: ellipsis;
-  width: 80px;
-}
