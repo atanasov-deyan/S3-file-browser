@@ -2,8 +2,7 @@ import { PropsWithChildren, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuthState, useNetworkState } from '../../store/storeFacade';
-import { authenticate, validateStoredAuthentication } from '../../store/authState/effects';
-import { AWSCredentials } from '../../definitions/AWSCredentials';
+import { validateStoredAuthentication } from '../../store/authState/effects';
 
 export const GuardUnauthorized = ({ children }: PropsWithChildren) => {
   const navigate = useNavigate();
