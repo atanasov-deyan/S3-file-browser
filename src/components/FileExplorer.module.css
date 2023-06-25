@@ -1,0 +1,11 @@
+@import '../css/vars.css';
+
+.folder-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.list-item {
+  margin-bottom: 16px;
+}

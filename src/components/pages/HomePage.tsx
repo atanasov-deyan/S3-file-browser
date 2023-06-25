@@ -5,6 +5,7 @@ import { Layout } from '../layout/Layout';
 import { LeftSidebar } from '../LeftSidebar';
 
 import styles from './HomePage.module.css';
+import { FileExplorer } from '../FileExplorer';
 
 export const HomePage = () => {
 
@@ -17,8 +18,9 @@ export const HomePage = () => {
     <Layout>
       <main className={styles.main}>
         <LeftSidebar/>
-        <section>
-          main content
+
+        <section className={styles.content}>
+          <FileExplorer/>
         </section>
       </main>
     </Layout>

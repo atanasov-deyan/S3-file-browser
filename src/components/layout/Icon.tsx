@@ -4,8 +4,9 @@ import styles from './Icon.module.css';
 
 interface IIconProps {
   name: string;
+  className?: string,
 }
 
-export const Icon = ({ name }: IIconProps) => (
-  <span className={toClassName([styles.icon, `icon-${name}`])}/>
+export const Icon = ({ className, name }: IIconProps) => (
+  <span className={toClassName([styles.icon, className, `icon-${name}`])}/>
 );
