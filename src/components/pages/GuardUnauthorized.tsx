@@ -2,6 +2,8 @@ import { PropsWithChildren, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuthState, useNetworkState } from '../../store/storeFacade';
+import { authenticate, validateStoredAuthentication } from '../../store/authState/effects';
+import { AWSCredentials } from '../../definitions/AWSCredentials';
 
 export const GuardUnauthorized = ({ children }: PropsWithChildren) => {
   const navigate = useNavigate();
@@ -9,9 +11,19 @@ export const GuardUnauthorized = ({ children }: PropsWithChildren) => {
   const { errors } = useNetworkState();
 
   const unauthorizedErrors = Object.values(errors)
-    .filter(error => error?.statusCode === 401 || error?.statusCode === 403)
+    .filter(error => error?.statusCode === 401 || error?.statusCode === 403);
 
   useEffect(() => {
+    const areCredentialsStored = localStorage.getItem('accessKeyId')
+      && localStorage.getItem('secretAccessKey')
+      && localStorage.getItem('bucketName');
+
+    if (!isAuthorized && areCredentialsStored) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      validateStoredAuthentication(navigate);
+      return;
+    }
+
     if (!isAuthorized || !!unauthorizedErrors.length) {
       navigate('/login');
     }
