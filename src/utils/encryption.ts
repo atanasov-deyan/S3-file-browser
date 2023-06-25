@@ -4,7 +4,7 @@ const algorithm = {
 };
 
 async function importKey(): Promise<CryptoKey> {
-  const encryptionKey = import.meta.env.VITE_API_KEY as string;
+  const encryptionKey = import.meta.env.VITE_ENCRYPTION_KEY;
   const encodedKey = new TextEncoder().encode(encryptionKey);
   const buffer = await crypto.subtle.digest('SHA-256', encodedKey);
   return await crypto.subtle.importKey(
