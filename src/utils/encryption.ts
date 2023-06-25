@@ -2,7 +2,7 @@ const algorithm = {
   name: 'AES-GCM',
   length: 256,
 };
-  console.log(import.meta.env.VITE_API_KEY);
+
 async function importKey(): Promise<CryptoKey> {
   const encryptionKey = import.meta.env.VITE_API_KEY as string;
   const encodedKey = new TextEncoder().encode(encryptionKey);
