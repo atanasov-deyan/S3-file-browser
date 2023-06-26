@@ -32,9 +32,7 @@ export const filesSlice = createSlice({
     },
     filesFailure: requestFailureActionReducer,
     createFileRequest: noop,
-    createFileSuccess: (state, action: PayloadAction<IObject>) => {
-      state.allObjects.push(action.payload);
-    },
+    createFileSuccess: noop,
     createFileFailure: requestFailureActionReducer,
   },
 });
