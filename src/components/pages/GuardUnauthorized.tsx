@@ -13,6 +13,7 @@ export const GuardUnauthorized = ({ children }: PropsWithChildren) => {
     .filter(error => error?.statusCode === 401 || error?.statusCode === 403);
 
   useEffect(() => {
+    // todo: move in a separate hook/Guard
     const areCredentialsStored = localStorage.getItem('accessKeyId')
       && localStorage.getItem('secretAccessKey')
       && localStorage.getItem('bucketName');
