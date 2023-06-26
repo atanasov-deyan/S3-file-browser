@@ -47,13 +47,13 @@ export const CreateFile = ({ onCancel }: ICreateFile) => {
 
   const fileName = currentPath.endsWith('.txt') ? currentPath.split('/').at(-1) : undefined;
 
-  const onCreateNewFile = useCallback((): void => {
+  const onCreateNewFile = (): void => {
     const fileKey = currentPath.startsWith('/')
      ? currentPath.slice(1)
      : currentPath;
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     createFile(fileKey, '', onCancel);
-  }, [onCancel, currentPath]);
+  };
 
   return (
         <div className={styles.container}>
