@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 
 
 import { Modal } from './layout/Modal';
-import { Breadcrumbs } from './layout/Breadcrumbs';
 import { Button } from './layout/Button';
 import { Icon } from './layout/Icon';
 import { entityTypes } from '../config';
@@ -70,24 +69,35 @@ export const CreateFileModal = ({ isVisible, closeModal } : ICreateFileModal) =>
       <Modal>
         <div className={styles.container}>
           <div className={styles.content}>
-            <Breadcrumbs/>
             <div className={styles['actions-container']}>
               <Button type='text' disabled={isFileDeclared} onClick={addFolder}>New folder</Button>
               &nbsp;
               <Button type='text' disabled={isFileDeclared} onClick={addFile}>New file</Button>
             </div>
-            {!!newEntity && (
+            {!isFileDeclared &&
               <form onSubmit={handleSubmit} className={styles['file-container']}>
-                <Icon className={styles.icon} name={newEntity === 'folder' ? 'folder' : 'file-o'}/>
-                <input
-                  type='text'
-                  id={`${newEntity}-input`}
-                  name={newEntity}
-                  placeholder={`New ${newEntity}`}
-                  required={true}
-                />
+                {!!newEntity && (
+                  <>
+                    <Icon className={styles.icon} name={newEntity === 'folder' ? 'folder' : 'file-o'}/>
+                    <div className={styles['input-wrapper']}>
+                      <input
+                        className={styles.input}
+                        type='text'
+                        id={`${newEntity}-input`}
+                        name={newEntity}
+                        placeholder={`New ${newEntity}`}
+                        required={true}
+                      />
+                      <span>
+                        <Button type='text' size='small' htmlType='submit'>
+                          Add
+                        </Button>
+                      </span>
+                    </div>
+                  </>
+                )}
               </form>
-            )}
+            }
             {isFileDeclared && (
               <div className={styles['file-container']}>
                 <Icon className={styles.icon} name={newEntity === 'folder' ? 'folder' : 'file-o'}/>

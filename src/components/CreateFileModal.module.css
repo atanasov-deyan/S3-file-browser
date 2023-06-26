@@ -30,11 +30,23 @@
 .file-container {
   display: flex;
   flex-direction: column;
+  height: 75%;
+  margin-top: 16px;
+  padding: 16px;
+  background-color: var(--athens-grey);
 }
 
 .icon {
   color: var(--blue-ribbon);
   font-size: 32px;
+}
+
+.input {
+  width: 70px;
+}
+
+.input-wrapper {
+  display: flex;
 }
 
 .modal-actions {

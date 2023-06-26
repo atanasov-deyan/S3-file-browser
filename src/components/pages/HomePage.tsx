@@ -3,10 +3,11 @@ import { useEffect } from 'react';
 import { getAllFiles } from '../../store/filesState/effects';
 import { Layout } from '../layout/Layout';
 import { LeftSidebar } from '../LeftSidebar';
+import { FileExplorer } from '../FileExplorer';
+import { HomePageBreadcrumbs } from '../HomePageBreadcrumbs';
 
 import styles from './HomePage.module.css';
-import { FileExplorer } from '../FileExplorer';
-import { Breadcrumbs } from '../layout/Breadcrumbs';
+import { CreateFile } from '../CreateFile';
 
 export const HomePage = () => {
 
@@ -21,8 +22,9 @@ export const HomePage = () => {
         <LeftSidebar/>
 
         <section className={styles.content}>
-          <Breadcrumbs/>
+          <HomePageBreadcrumbs/>
 
+          <CreateFile/>
           <FileExplorer/>
         </section>
       </main>

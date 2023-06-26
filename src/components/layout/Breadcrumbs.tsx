@@ -1,19 +1,19 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import { Icon } from './Icon';
 
 import styles from './Breadcrumbs.module.css';
 
-export const Breadcrumbs = () => {
-  const { pathname } = useLocation();
-
+export const Breadcrumbs = ({ pathname }: { pathname: string }) => {
   const path = pathname.split('/');
 
   const crumbs = path.slice(0, path.length - 1).map((name, i) => ({
     label: i === 0 ? <Icon name='home' className={styles.root}/> : name,
     path: i === 0 ? '/' : `${path.slice(0, i + 1).join('/')}`,
   }));
+  const isRootDir = pathname === '/';
 
-  return crumbs.length > 1 && (
+  return !isRootDir && (
     <div className={styles.breadcrumbs}>
       {crumbs.map(({ label, path }, i) => (
           <Link
