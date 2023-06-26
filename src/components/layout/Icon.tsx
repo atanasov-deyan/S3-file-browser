@@ -1,4 +1,4 @@
-import { CSSProperties, ComponentProps } from 'react';
+import { CSSProperties } from 'react';
 import { toClassName } from '../../utils/toClassName';
 
 import styles from './Icon.module.css';

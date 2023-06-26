@@ -1,6 +1,7 @@
 import React from 'react';
 
 import s3Logo from '../../../public/images/logo.svg';
+
 import styles from './Header.module.css';
 
 export const Header = () => (

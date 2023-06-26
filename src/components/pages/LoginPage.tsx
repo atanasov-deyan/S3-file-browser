@@ -1,8 +1,8 @@
 import { LoginForm } from '../LoginForm';
 import { LoginHeading } from '../LoginHeading';
+import { Layout } from '../layout/Layout';
 
 import styles from './LoginPage.module.css';
-import { Layout } from '../layout/Layout';
 
 export const LoginPage = () => {
 

@@ -1,10 +1,10 @@
 import { FormEventHandler, useState } from 'react';
-
-import styles from './CreateFileForm.module.css';
 import { Icon } from './layout/Icon';
 import { Button } from './layout/Button';
 import { ErrorMessage } from './layout/ErrorMessage';
 import { entityTypes } from '../config';
+
+import styles from './CreateFileForm.module.css';
 
 const isValidName= (name: string): boolean => {
   // Regular expression pattern for folder or file validation
