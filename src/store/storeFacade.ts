@@ -33,3 +33,8 @@ export const useFilesState = () => useAppSelector(
   (state) => state.filesState,
   shallowEqual,
 );
+
+export const useUiState = () => useAppSelector(
+  (state) => state.uiState,
+  shallowEqual,
+);
