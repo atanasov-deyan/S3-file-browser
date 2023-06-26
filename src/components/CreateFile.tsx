@@ -1,14 +1,14 @@
-import { FormEvent, useCallback, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { Button } from './layout/Button';
 import { entityTypes } from '../config';
 import { createFile } from '../store/filesState/effects';
-
-import styles from './CreateFileModal.module.css';
 import { CreateFileForm } from './CreateFileForm';
 import { CreateFileBreadcrumbs } from './CreateFileBreadcrumbs';
 import { CreateNewEntityActions } from './CreateNewEntityActions';
+
+import styles from './CreateFile.module.css';
 
 interface ICreateFile {
   onCancel: VoidFunction,

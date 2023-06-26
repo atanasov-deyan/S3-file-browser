@@ -2,10 +2,10 @@ import { useCallback, useState } from 'react';
 
 import { Button } from './layout/Button';
 import { Icon } from './layout/Icon';
+import { Modal } from './layout/Modal';
 import { CreateFile } from './CreateFile';
 
-import styles from './CreateFile.module.css';
-import { Modal } from './layout/Modal';
+import styles from './CreateFileModal.module.css';
 
 export const CreateFileModal = () => {
   const [isVisible, setIsVisible] = useState(false);
