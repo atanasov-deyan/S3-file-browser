@@ -7,7 +7,7 @@ import { FileExplorer } from '../FileExplorer';
 import { HomePageBreadcrumbs } from '../HomePageBreadcrumbs';
 
 import styles from './HomePage.module.css';
-import { CreateFile } from '../CreateFile';
+import { CreateFileModal } from '../CreateFileModal';
 
 export const HomePage = () => {
 
@@ -24,7 +24,7 @@ export const HomePage = () => {
         <section className={styles.content}>
           <HomePageBreadcrumbs/>
 
-          <CreateFile/>
+          <CreateFileModal/>
           <FileExplorer/>
         </section>
       </main>
