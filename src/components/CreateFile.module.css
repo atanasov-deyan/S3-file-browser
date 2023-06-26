@@ -1,3 +1,30 @@
-.icon {
-  padding-top: 4px;
+@import '../css/vars.css';
+
+.container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 25%;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  min-height: 350px;
+  background-color: var(--mischka-grey);
+  border: 1px solid var(--athens-grey);
+  border-radius: 2px;
+  padding: 24px;
+}
+
+.modal-actions {
+  display: flex;
+  margin-top: auto;
+  margin-left: auto;
 }

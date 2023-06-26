@@ -16,11 +16,11 @@ interface ICreateFileFormProps {
   entityType: string,
   fileName?: string,
 }
+
 export const CreateFileForm = ({ handleSubmit, entityType, fileName }: ICreateFileFormProps) => {
 
-  return (
-    <>
-    {!fileName &&
+  return !fileName
+    ? (
       <form onSubmit={handleSubmit} className={styles['file-container']}>
         {!!entityType && (
           <>
@@ -43,12 +43,11 @@ export const CreateFileForm = ({ handleSubmit, entityType, fileName }: ICreateFi
           </>
         )}
       </form>
-    }
-    {fileName && (
+    )
+    : (
       <div className={styles['file-container']}>
         <Icon className={styles.icon} name={'file-o'}/>
         {fileName}
       </div>
-    )}</>
-  );
+    );
 };
