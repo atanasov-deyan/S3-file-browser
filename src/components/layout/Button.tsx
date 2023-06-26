@@ -5,16 +5,16 @@ import { toClassName } from '../../utils/toClassName';
 import { Spin } from './Spin';
 
 type SizeType = 'small' | 'middle' | 'large';
-type ButtonHTMLType = 'submit' | 'button' | 'reset'
-type ButtonType = 'default' | 'primary' | 'ghost' | 'text'
+type ButtonHTMLType = 'submit' | 'button' | 'reset';
+type ButtonType = 'default' | 'primary' | 'ghost' | 'text';
 
 export interface IButtonProps extends Omit<ComponentProps<'button'>, 'type'> {
   onClick?: React.MouseEventHandler;
   size?: SizeType;
   type?: ButtonType;
-  htmlType?: ButtonHTMLType,
-  children: ReactNode,
-  loading?: boolean,
+  htmlType?: ButtonHTMLType;
+  children: ReactNode;
+  loading?: boolean;
 }
 
 export const Button = ({

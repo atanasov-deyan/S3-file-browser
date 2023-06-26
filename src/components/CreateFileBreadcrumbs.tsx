@@ -1,9 +1,9 @@
 import { Button } from './layout/Button';
 
 interface ICreateFileBreadcrumbsProps {
-  pathname: string,
-  currentPath: string,
-  setCurrentPath: (value: string) => void,
+  pathname: string;
+  currentPath: string;
+  setCurrentPath: (value: string) => void;
 }
 
 export const CreateFileBreadcrumbs = ({ pathname, currentPath, setCurrentPath }: ICreateFileBreadcrumbsProps) => {

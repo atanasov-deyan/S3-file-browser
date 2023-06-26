@@ -5,8 +5,8 @@ import styles from './Icon.module.css';
 
 interface IIconProps {
   name: string;
-  className?: string,
-  style?: CSSProperties,
+  className?: string;
+  style?: CSSProperties;
 }
 
 export const Icon = ({ className, name, style }: IIconProps) => (

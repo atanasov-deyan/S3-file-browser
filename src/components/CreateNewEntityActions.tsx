@@ -5,8 +5,8 @@ import { entityTypes } from '../config';
 import styles from './CreateFileEntityActions.module.css';
 
 interface ICreateNewEntityActions {
-  setNewEntity: (v: string) => void,
-  isDisabled: boolean
+  setNewEntity: (v: string) => void;
+  isDisabled: boolean;
 }
 
 export const CreateNewEntityActions = ({ setNewEntity, isDisabled }: ICreateNewEntityActions) => {

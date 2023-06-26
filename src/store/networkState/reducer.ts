@@ -4,13 +4,13 @@ import { Dictionary } from '../../definitions/Dictionary';
 import { IParsedError } from '../../utils/parseError';
 
 interface AnyAction {
-  type: string,
-  payload?: unknown
+  type: string;
+  payload?: unknown;
 }
 
 interface NetworkState {
-  loading: Dictionary<boolean>
-  errors: Dictionary<IParsedError | undefined>
+  loading: Dictionary<boolean>;
+  errors: Dictionary<IParsedError | undefined>;
 }
 
 export const initialNetworkState: NetworkState = {

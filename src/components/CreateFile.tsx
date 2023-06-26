@@ -13,7 +13,7 @@ import { FilesEventEnum, trackFilesEvent } from '../store/filesState/reducer';
 import styles from './CreateFile.module.css';
 
 interface ICreateFile {
-  onCancel: VoidFunction,
+  onCancel: VoidFunction;
 }
 
 export const CreateFile = ({ onCancel }: ICreateFile) => {

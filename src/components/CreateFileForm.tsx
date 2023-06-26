@@ -14,9 +14,9 @@ const isValidName= (name: string): boolean => {
 };
 
 interface ICreateFileFormProps {
-  handleSubmit: FormEventHandler,
-  entityType: string,
-  fileName?: string,
+  handleSubmit: FormEventHandler;
+  entityType: string;
+  fileName?: string;
 }
 
 const errorMessage = 'The following symbols are not allowed: "/", "\\", "." and empty space';
