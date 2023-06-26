@@ -8,9 +8,14 @@ import { ROOT_DIR_NAME } from '../../config';
 
 type FilesTree = Dictionary<string[]>;
 
+export enum FilesEventEnum {
+  SYNC_FILES = 'SYNC_FILES',
+}
+
 interface IFilesState {
   allObjects: IObject[];
   filesTree: FilesTree;
+  eventTracker: FilesEventEnum | null;
 }
 
 const initialState: IFilesState = {
@@ -18,6 +23,7 @@ const initialState: IFilesState = {
   filesTree: {
     [ROOT_DIR_NAME]: [],
   },
+  eventTracker: null,
 };
 
 export const filesSlice = createSlice({
@@ -31,9 +37,23 @@ export const filesSlice = createSlice({
       state.filesTree = filesTree;
     },
     filesFailure: requestFailureActionReducer,
+    createFileRequest: noop,
+    createFileSuccess: noop,
+    createFileFailure: requestFailureActionReducer,
+    trackFilesEvent: (state, action: PayloadAction<{ eventTracker: FilesEventEnum | null}>) => {
+      state.eventTracker = action.payload.eventTracker;
+    },
   },
 });
 
-export const { filesRequest, filesSuccess, filesFailure } = filesSlice.actions;
+export const {
+  filesRequest,
+  filesSuccess,
+  filesFailure,
+  createFileRequest,
+  createFileSuccess,
+  createFileFailure,
+  trackFilesEvent,
+} = filesSlice.actions;
 
 export const filesStateReducer = filesSlice.reducer;

@@ -2,8 +2,13 @@ import { IParsedError } from '../../utils/parseError';
 
 import style from './ErrorMessage.module.css';
 
+type BasicError = {
+  message?: string;
+  code: string;
+};
+
 interface IErrorMessageProps {
-  error?: IParsedError,
+  error?: IParsedError | BasicError,
   showError: boolean
 }
 
