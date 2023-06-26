@@ -9,7 +9,11 @@ export const Routes = () => (
     <RouterRoutes>
       <Route
         path='/login'
-        element={<LoginPage/>}
+        element={
+          <GuardUnauthorized>
+            <LoginPage/>
+          </GuardUnauthorized>
+      }
       />
 
       <Route
