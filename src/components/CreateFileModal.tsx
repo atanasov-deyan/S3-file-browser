@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { FormEvent, useCallback, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 
@@ -9,18 +9,12 @@ import { entityTypes } from '../config';
 import { createFile } from '../store/filesState/effects';
 
 import styles from './CreateFileModal.module.css';
+import { CreateFileForm } from './CreateFileForm';
 
 interface ICreateFileModal {
   isVisible: boolean;
   closeModal: VoidFunction;
 }
-
-const isValidName= (key: string): boolean => {
-  // Regular expression pattern for folder or file validation
-  const pattern = /^[^/\\\\.]+$/;
-
-  return pattern.test(key);
-};
 
 export const CreateFileModal = ({ isVisible, closeModal } : ICreateFileModal) => {
   const { pathname } = useLocation();
@@ -31,7 +25,7 @@ export const CreateFileModal = ({ isVisible, closeModal } : ICreateFileModal) =>
   const addFolder = () => setNewEntity(entityTypes.folder);
   const addFile = () => setNewEntity(entityTypes.file);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const fieldValues = Object.fromEntries(formData.entries());
@@ -55,7 +49,7 @@ export const CreateFileModal = ({ isVisible, closeModal } : ICreateFileModal) =>
     setNewEntity('');
   };
 
-  const isFileDeclared = currentPath.endsWith('.txt');
+  const fileName = currentPath.endsWith('.txt') ? currentPath.split('/').at(-1) : undefined;
 
   const createNewFile = useCallback((): void => {
     const fileKey = currentPath.startsWith('/')
@@ -70,42 +64,19 @@ export const CreateFileModal = ({ isVisible, closeModal } : ICreateFileModal) =>
         <div className={styles.container}>
           <div className={styles.content}>
             <div className={styles['actions-container']}>
-              <Button type='text' disabled={isFileDeclared} onClick={addFolder}>New folder</Button>
+              <Button type='text' disabled={!!fileName} onClick={addFolder}>New folder</Button>
               &nbsp;
-              <Button type='text' disabled={isFileDeclared} onClick={addFile}>New file</Button>
+              <Button type='text' disabled={!!fileName} onClick={addFile}>New file</Button>
             </div>
-            {!isFileDeclared &&
-              <form onSubmit={handleSubmit} className={styles['file-container']}>
-                {!!newEntity && (
-                  <>
-                    <Icon className={styles.icon} name={newEntity === 'folder' ? 'folder' : 'file-o'}/>
-                    <div className={styles['input-wrapper']}>
-                      <input
-                        className={styles.input}
-                        type='text'
-                        id={`${newEntity}-input`}
-                        name={newEntity}
-                        placeholder={`New ${newEntity}`}
-                        required={true}
-                      />
-                      <span>
-                        <Button type='text' size='small' htmlType='submit'>
-                          Add
-                        </Button>
-                      </span>
-                    </div>
-                  </>
-                )}
-              </form>
-            }
-            {isFileDeclared && (
-              <div className={styles['file-container']}>
-                <Icon className={styles.icon} name={newEntity === 'folder' ? 'folder' : 'file-o'}/>
-                {currentPath.split('/').at(-1)}
-              </div>
-            )}
+
+              <CreateFileForm
+                handleSubmit={handleSubmit}
+                entityType={newEntity}
+                fileName={fileName}
+              />
+
             <div className={styles['modal-actions']}>
-              <Button type='primary' size='small' disabled={!isFileDeclared} onClick={createNewFile}>
+              <Button type='primary' size='small' disabled={!fileName} onClick={createNewFile}>
                 Create
               </Button>
               &nbsp;
