@@ -14,9 +14,8 @@ export const GuardUnauthorized = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     // todo: move in a separate hook/Guard
-    const areCredentialsStored = localStorage.getItem('accessKeyId')
-      && localStorage.getItem('secretAccessKey')
-      && localStorage.getItem('bucketName');
+    // simple check to see if we have credentials to try and authenticate with
+    const areCredentialsStored = localStorage.getItem('accessKeyId');
 
     if (!isAuthorized && areCredentialsStored) {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
