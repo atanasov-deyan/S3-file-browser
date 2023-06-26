@@ -1,0 +1,17 @@
+@import '../../css/vars.css';
+
+.breadcrumbs {
+  color: var(--dodger-blue);
+  font-size: var(--font-size-x-large);
+  margin-bottom: 24px;
+}
+
+.root {
+  color: var(--dodger-blue);
+}
+
+.link {
+  color: var(--dodger-blue);
+  text-decoration: none;
+  margin-right: 4px;
+}

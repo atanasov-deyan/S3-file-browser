@@ -6,6 +6,7 @@ import { LeftSidebar } from '../LeftSidebar';
 
 import styles from './HomePage.module.css';
 import { FileExplorer } from '../FileExplorer';
+import { Breadcrumbs } from '../layout/Breadcrumbs';
 
 export const HomePage = () => {
 
@@ -20,6 +21,8 @@ export const HomePage = () => {
         <LeftSidebar/>
 
         <section className={styles.content}>
+          <Breadcrumbs/>
+
           <FileExplorer/>
         </section>
       </main>
