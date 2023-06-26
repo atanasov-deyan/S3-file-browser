@@ -31,9 +31,21 @@ export const filesSlice = createSlice({
       state.filesTree = filesTree;
     },
     filesFailure: requestFailureActionReducer,
+    createFileRequest: noop,
+    createFileSuccess: (state, action: PayloadAction<IObject>) => {
+      state.allObjects.push(action.payload);
+    },
+    createFileFailure: requestFailureActionReducer,
   },
 });
 
-export const { filesRequest, filesSuccess, filesFailure } = filesSlice.actions;
+export const {
+  filesRequest,
+  filesSuccess,
+  filesFailure,
+  createFileRequest,
+  createFileSuccess,
+  createFileFailure,
+} = filesSlice.actions;
 
 export const filesStateReducer = filesSlice.reducer;

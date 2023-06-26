@@ -1,5 +1,5 @@
 import AWS, { S3, AWSError } from 'aws-sdk';
-import { ListObjectsV2Output } from 'aws-sdk/clients/s3';
+import { ListObjectsV2Output, PutObjectOutput } from 'aws-sdk/clients/s3';
 import { AWSCredentials } from '../definitions/AWSCredentials';
 
 class S3Service {
@@ -54,7 +54,7 @@ class S3Service {
 
   }
 
-  async createObject(key: string, content: string): Promise<void> {
+  async createObject(key: string, content: string): Promise<PutObjectOutput> {
     // todo: move to a validator?
     if (!this.#bucketName || !this.#s3) {
       throw new Error('S3 service not configured. Please call configureS3 method first.');
@@ -66,12 +66,7 @@ class S3Service {
       Body: content,
     };
 
-    try {
-      await this.#s3.putObject(params).promise();
-      console.log('Object created successfully');
-    } catch (error) {
-      console.error('Error occurred while creating object:', error);
-    }
+    return this.#s3.putObject(params).promise();
   }
 
   async deleteObject(key: string): Promise<void> {
