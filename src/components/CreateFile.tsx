@@ -7,6 +7,8 @@ import { createFile } from '../store/filesState/effects';
 import { CreateFileForm } from './CreateFileForm';
 import { CreateFileBreadcrumbs } from './CreateFileBreadcrumbs';
 import { CreateNewEntityActions } from './CreateNewEntityActions';
+import { dispatch } from '../store/storeFacade';
+import { FilesEventEnum, trackFilesEvent } from '../store/filesState/reducer';
 
 import styles from './CreateFile.module.css';
 
@@ -58,11 +60,17 @@ export const CreateFile = ({ onCancel }: ICreateFile) => {
   const fileName = newFile.path.endsWith('.txt') ? newFile.path.split('/').at(-1) : undefined;
 
   const onCreateNewFile = (): void => {
-    const fileKey = newFile.path.startsWith('/')
+    const { path, content } = newFile;
+    const fileKey = path.startsWith('/')
      ? newFile.path.slice(1)
      : newFile.path;
+
+     const onSuccessCreation = () => {
+      onCancel();
+      dispatch(trackFilesEvent({ eventTracker: FilesEventEnum.SYNC_FILES }));
+     };
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    createFile(fileKey, '', onCancel);
+    createFile(fileKey, content, onSuccessCreation);
   };
   const setCurrentPath = (path: string) => setNewFile({ ...newFile, path });
   return (

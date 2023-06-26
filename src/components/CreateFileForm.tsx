@@ -19,13 +19,13 @@ interface ICreateFileFormProps {
   fileName?: string,
 }
 
-const errorMessage = 'The following symbols are not allowed: "/", "\\" and "."';
+const errorMessage = 'The following symbols are not allowed: "/", "\\", "." and empty space';
 
 export const CreateFileForm = ({ handleSubmit, entityType, fileName }: ICreateFileFormProps) => {
   const [value, setValue] = useState('');
   const [touched, setTouched] = useState(false);
   const showErrorMessage = touched && !isValidName(value);
-  console.log({ isValid: isValidName(value), touched, value })
+
   return !fileName
     ? (
       <form onSubmit={handleSubmit} className={styles['file-container']}>
@@ -45,11 +45,15 @@ export const CreateFileForm = ({ handleSubmit, entityType, fileName }: ICreateFi
                 required={true}
                 aria-describedby={showErrorMessage ? `${entityType}-error` : undefined}
               />
-              <span>
-                <Button type='text' size='small' htmlType='submit'>
-                  Add
+
+                <Button
+                  type='text'
+                  size='small'
+                  htmlType='submit'
+                  disabled={!isValidName(value)}
+                >
+                 Add
                 </Button>
-              </span>
             </div>
             <ErrorMessage showError={showErrorMessage} error={{ message: errorMessage, code: entityType }}/>
 
