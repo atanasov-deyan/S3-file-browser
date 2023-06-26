@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 
-import { getAllFiles } from '../../store/filesState/effects';
 import { Layout } from '../layout/Layout';
 import { LeftSidebar } from '../LeftSidebar';
 import { FileExplorer } from '../FileExplorer';
@@ -8,12 +7,15 @@ import { HomePageBreadcrumbs } from '../HomePageBreadcrumbs';
 
 import styles from './HomePage.module.css';
 import { CreateFileModal } from '../CreateFileModal';
+import { useFilesEventTracker } from '../../hooks.ts/fileHooks';
+import { dispatch } from '../../store/storeFacade';
+import { FilesEventEnum, trackFilesEvent } from '../../store/filesState/reducer';
 
 export const HomePage = () => {
+  useFilesEventTracker();
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    getAllFiles();
+    dispatch(trackFilesEvent({ eventTracker: FilesEventEnum.SYNC_FILES }));
   }, []);
 
   return (
