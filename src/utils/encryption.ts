@@ -21,7 +21,7 @@ export async function encryptString(data: string): Promise<string> {
   const encodedData = new TextEncoder().encode(data);
   const key = await importKey();
   const encryptedData = await crypto.subtle.encrypt(
-    { name: 'AES-GCM', iv },
+    { name: algorithm.name, iv },
     key,
     encodedData,
   );
@@ -41,12 +41,12 @@ export async function decryptString(encryptedData: string | null): Promise<strin
     encryptedData.split('').map((char) => char.charCodeAt(0)),
   );
   const iv = combinedData.slice(0, 12);
-  const ciphertext = combinedData.slice(12);
+  const cipherText = combinedData.slice(12);
   const key = await importKey();
   const decryptedData = await crypto.subtle.decrypt(
-    { name: 'AES-GCM', iv },
+    { name: algorithm.name, iv },
     key,
-    ciphertext,
+    cipherText,
   );
   return new TextDecoder().decode(decryptedData);
 }
