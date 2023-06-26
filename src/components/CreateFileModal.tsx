@@ -45,11 +45,11 @@ export const CreateFileModal = ({ isVisible, closeModal } : ICreateFileModal) =>
     }
 
     if (newEntity === entityTypes.folder) {
-      setCurrentPath(`${currentPath}/${value}`);
+      setCurrentPath(`${currentPath}/${value.trim()}`);
     }
 
     if (newEntity === entityTypes.file) {
-      setCurrentPath(`${currentPath}/${value}.txt`);
+      setCurrentPath(`${currentPath}/${value.trim()}.txt`);
     }
 
     setNewEntity('');
