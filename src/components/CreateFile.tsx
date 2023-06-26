@@ -18,7 +18,7 @@ export const CreateFile = ({ onCancel }: ICreateFile) => {
   const { pathname } = useLocation();
   // file names do not start with a slash
   const path = pathname.slice(1);
-  const [currentPath, setCurrentPath] = useState(path);
+  const [newFile, setNewFile] = useState({ path, content: '' });
   const [newEntity, setNewEntity] = useState('');
 
   const onFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -28,6 +28,7 @@ export const CreateFile = ({ onCancel }: ICreateFile) => {
 
     const {
       [newEntity]: value,
+      content,
     } = fieldValues;
 
     if (typeof value !== 'string') {
@@ -35,32 +36,41 @@ export const CreateFile = ({ onCancel }: ICreateFile) => {
     }
 
     if (newEntity === entityTypes.folder) {
-      setCurrentPath(`${currentPath}/${value.trim()}`);
+      setNewFile({
+        ...newFile,
+        path: `${newFile.path}/${value.trim()}`,
+      });
     }
 
-    if (newEntity === entityTypes.file) {
-      setCurrentPath(`${currentPath}/${value.trim()}.txt`);
+    if (newEntity === entityTypes.file && typeof content === 'string') {
+      setNewFile(
+        {
+          ...newFile,
+          path: `${newFile.path}/${value.trim()}.txt`,
+          content,
+        },
+      );
     }
 
     setNewEntity('');
   };
 
-  const fileName = currentPath.endsWith('.txt') ? currentPath.split('/').at(-1) : undefined;
+  const fileName = newFile.path.endsWith('.txt') ? newFile.path.split('/').at(-1) : undefined;
 
   const onCreateNewFile = (): void => {
-    const fileKey = currentPath.startsWith('/')
-     ? currentPath.slice(1)
-     : currentPath;
+    const fileKey = newFile.path.startsWith('/')
+     ? newFile.path.slice(1)
+     : newFile.path;
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     createFile(fileKey, '', onCancel);
   };
-
+  const setCurrentPath = (path: string) => setNewFile({ ...newFile, path });
   return (
         <div className={styles.container}>
           <div className={styles.content}>
             <CreateFileBreadcrumbs
               pathname={path}
-              currentPath={currentPath}
+              currentPath={newFile.path}
               setCurrentPath={setCurrentPath}
             />
 
