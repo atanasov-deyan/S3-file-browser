@@ -34,12 +34,13 @@ export const getAllFiles = async (): Promise<void> => {
   }
 };
 
-export const createFile = async (key: string, content: string) => {
+export const createFile = async (key: string, content: string, callback: VoidFunction = noop) => {
   dispatch(createFileRequest());
 
   try {
     await s3Service.createObject(key, content);
     dispatch(createFileSuccess());
+    callback();
   } catch (e) {
     dispatch(createFileFailure(parseError(e as AWSError)));
   }
