@@ -1,12 +1,14 @@
+import { ObjectKey } from 'aws-sdk/clients/s3';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type FilePreviewModalState = {
   isVisible: boolean,
-  fileKey: null | string,
+  fileKey: ObjectKey | null,
 }
 
 interface IUiState {
   filePreviewModal: FilePreviewModalState;
+  fileKeyToDelete: ObjectKey | null,
 }
 
 const initialState: IUiState = {
@@ -14,13 +16,14 @@ const initialState: IUiState = {
     isVisible: false,
     fileKey: null,
   },
+  fileKeyToDelete: null,
 };
 
 export const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    openFilePreviewModal: (state, action: PayloadAction<{ fileKey: string }>) => {
+    openFilePreviewModal: (state, action: PayloadAction<{ fileKey: ObjectKey }>) => {
       const { fileKey } = action.payload;
       state.filePreviewModal = {
         isVisible: true,
@@ -32,9 +35,17 @@ export const uiSlice = createSlice({
         ...initialState.filePreviewModal,
       };
     },
+    setFileKeyToDelete: (state, action: PayloadAction<{ fileKey: IUiState['fileKeyToDelete'] }>) => {
+      const { fileKey } = action.payload;
+      state.fileKeyToDelete = fileKey;
+    },
   },
 });
 
-export const { openFilePreviewModal, closeFilePreviewModal } = uiSlice.actions;
+export const {
+  openFilePreviewModal,
+  closeFilePreviewModal,
+  setFileKeyToDelete,
+} = uiSlice.actions;
 
 export const uiStateReducer = uiSlice.reducer;
