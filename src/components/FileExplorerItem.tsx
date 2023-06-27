@@ -8,6 +8,8 @@ import { Button } from './layout/Button';
 import { ROOT_DIR_NAME } from '../config';
 
 import styles from './FileExplorerItem.module.css';
+import { dispatch } from '../store/storeFacade';
+import { openFilePreviewModal } from '../store/uiState/reducer';
 
 interface IFileExplorerItemProps {
   name: string;
@@ -28,6 +30,11 @@ export const FileExplorerItem = ({ name }: IFileExplorerItemProps) => {
       if (isDir) {
         const folderPath = pathname === ROOT_DIR_NAME ? '' : pathname;
         navigate(`${folderPath}/${name}`);
+      } else {
+        // remove the initial / to obtain fileKey
+        const folderPath = pathname.slice(1);
+        const fileKey = pathname === ROOT_DIR_NAME ? name : `${folderPath}/${name}`;
+        dispatch(openFilePreviewModal({ fileKey }));
       }
     }
   };

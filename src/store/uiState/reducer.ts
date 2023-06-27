@@ -1,7 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { noop } from '../../utils/noop';
-
 type FilePreviewModalState = {
   isVisible: boolean,
   fileKey: null | string,

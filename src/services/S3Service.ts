@@ -1,5 +1,5 @@
 import AWS, { S3, AWSError } from 'aws-sdk';
-import { ListObjectsV2Output, PutObjectOutput } from 'aws-sdk/clients/s3';
+import { GetObjectOutput, ListObjectsV2Output, PutObjectOutput } from 'aws-sdk/clients/s3';
 import { AWSCredentials } from '../definitions/AWSCredentials';
 
 class S3Service {
@@ -67,6 +67,19 @@ class S3Service {
     };
 
     return this.#s3.putObject(params).promise();
+  }
+
+  async getObject(key: string): Promise<GetObjectOutput> {
+    if (!this.#bucketName || !this.#s3) {
+      throw new Error('S3 service not configured. Please call configureS3 method first.');
+    }
+
+    const params: S3.GetObjectRequest = {
+      Bucket: this.#bucketName,
+      Key: key,
+    };
+
+      return await this.#s3.getObject(params).promise();
   }
 
   async deleteObject(key: string): Promise<void> {
