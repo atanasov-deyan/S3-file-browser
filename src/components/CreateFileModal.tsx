@@ -21,7 +21,9 @@ export const CreateFileModal = () => {
     </Button>
     {isVisible && (
       <Modal>
-        <CreateFile onCancel={closeModal}/>
+        <div className={styles['modal-content']}>
+          <CreateFile onCancel={closeModal}/>
+        </div>
       </Modal>
     )}
   </div>

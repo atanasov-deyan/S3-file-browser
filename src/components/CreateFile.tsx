@@ -69,37 +69,35 @@ export const CreateFile = ({ onCancel }: ICreateFile) => {
       onCancel();
       dispatch(trackFilesEvent({ eventTracker: FilesEventEnum.SYNC_FILES }));
      };
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    createFile(fileKey, content, onSuccessCreation);
+
+     createFile(fileKey, content, onSuccessCreation);
   };
   const setCurrentPath = (path: string) => setNewFile({ ...newFile, path });
   return (
-        <div className={styles.container}>
-          <div className={styles.content}>
-            <CreateFileBreadcrumbs
-              pathname={path}
-              currentPath={newFile.path}
-              setCurrentPath={setCurrentPath}
-            />
+    <div className={styles.content}>
+      <CreateFileBreadcrumbs
+        pathname={path}
+        currentPath={newFile.path}
+        setCurrentPath={setCurrentPath}
+      />
 
-            <CreateNewEntityActions isDisabled={!!fileName} setNewEntity={setNewEntity}/>
+      <CreateNewEntityActions isDisabled={!!fileName} setNewEntity={setNewEntity}/>
 
-            <CreateFileForm
-              handleSubmit={onFormSubmit}
-              entityType={newEntity}
-              fileName={fileName}
-            />
+      <CreateFileForm
+        handleSubmit={onFormSubmit}
+        entityType={newEntity}
+        fileName={fileName}
+      />
 
-            <div className={styles['modal-actions']}>
-              <Button type='primary' size='small' disabled={!fileName} onClick={onCreateNewFile}>
-                Create
-              </Button>
-              &nbsp;
-              <Button type='default' size='small' onClick={onCancel}>
-                Cancel
-              </Button>
-            </div>
-          </div>
-        </div>
+      <div className={styles['modal-actions']}>
+        <Button type='primary' size='small' disabled={!fileName} onClick={onCreateNewFile}>
+          Create
+        </Button>
+        &nbsp;
+        <Button type='default' size='small' onClick={onCancel}>
+          Cancel
+        </Button>
+      </div>
+    </div>
   );
 };
