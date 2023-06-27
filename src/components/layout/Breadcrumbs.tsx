@@ -5,7 +5,7 @@ import { Icon } from './Icon';
 import styles from './Breadcrumbs.module.css';
 
 interface IBreadcrumbProps {
-  pathname: string,
+  pathname: string;
 }
 
 export const Breadcrumbs = ({ pathname }: IBreadcrumbProps) => {

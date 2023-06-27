@@ -5,8 +5,8 @@ import { toClassName } from '../../utils/toClassName';
 import styles from './Sidebar.module.css' ;
 
 interface ISidebarProps {
-  className?: string,
-  children: ReactNode,
+  className?: string;
+  children: ReactNode;
 }
 
 export const Sidebar = ({ className, children }: ISidebarProps) => {

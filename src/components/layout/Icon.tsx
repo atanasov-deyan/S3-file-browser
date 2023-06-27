@@ -1,12 +1,12 @@
-import { CSSProperties, ComponentProps } from 'react';
+import { CSSProperties } from 'react';
 import { toClassName } from '../../utils/toClassName';
 
 import styles from './Icon.module.css';
 
 interface IIconProps {
   name: string;
-  className?: string,
-  style?: CSSProperties,
+  className?: string;
+  style?: CSSProperties;
 }
 
 export const Icon = ({ className, name, style }: IIconProps) => (

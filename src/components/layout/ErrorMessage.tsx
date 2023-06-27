@@ -8,8 +8,8 @@ type BasicError = {
 };
 
 interface IErrorMessageProps {
-  error?: IParsedError | BasicError,
-  showError: boolean
+  error?: IParsedError | BasicError;
+  showError: boolean;
 }
 
 export const ErrorMessage = ({ error, showError }: IErrorMessageProps) => (showError && !!error) && (

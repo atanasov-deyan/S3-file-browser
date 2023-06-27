@@ -1,12 +1,10 @@
-.icon {
-  padding-top: 4px;
-}
+@import '../css/vars.css';
 
 .modal-content {
   position: fixed;
   left: 0;
   right: 0;
-  top: 25%;
+  top: 10%;
   bottom: 0;
   z-index: 10;
   display: flex;

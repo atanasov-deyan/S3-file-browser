@@ -5,9 +5,9 @@ import { loginFormFields } from '../config';
 import { authenticate } from '../store/authState/effects';
 import { useErrorState, useLoadingState } from '../store/storeFacade';
 import { IFormField } from '../definitions/FormField';
+import { ErrorMessage } from './layout/ErrorMessage';
 
 import styles from './LoginForm.module.css';
-import { ErrorMessage } from './layout/ErrorMessage';
 
 export const LoginForm = () => {
   const isLoading = useLoadingState('auth/auth');

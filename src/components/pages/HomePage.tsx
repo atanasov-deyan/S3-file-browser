@@ -4,12 +4,13 @@ import { Layout } from '../layout/Layout';
 import { LeftSidebar } from '../LeftSidebar';
 import { FileExplorer } from '../FileExplorer';
 import { HomePageBreadcrumbs } from '../HomePageBreadcrumbs';
-
-import styles from './HomePage.module.css';
 import { CreateFileModal } from '../CreateFileModal';
 import { useFilesEventTracker } from '../../hooks.ts/fileHooks';
 import { dispatch } from '../../store/storeFacade';
 import { FilesEventEnum, trackFilesEvent } from '../../store/filesState/reducer';
+
+import styles from './HomePage.module.css';
+import { FilePreviewModal } from '../FilePreviewModal';
 
 export const HomePage = () => {
   useFilesEventTracker();
@@ -28,6 +29,8 @@ export const HomePage = () => {
 
           <CreateFileModal/>
           <FileExplorer/>
+
+          <FilePreviewModal/>
         </section>
       </main>
     </Layout>

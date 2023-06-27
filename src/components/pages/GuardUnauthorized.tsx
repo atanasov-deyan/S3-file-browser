@@ -18,7 +18,6 @@ export const GuardUnauthorized = ({ children }: PropsWithChildren) => {
     const areCredentialsStored = localStorage.getItem('accessKeyId');
 
     if (!isAuthorized && areCredentialsStored) {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       validateStoredAuthentication(navigate);
       return;
     }
