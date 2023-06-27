@@ -2,10 +2,10 @@
 .file-content {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 75vw;
   padding: 24px;
   background-color: var(--athens-grey);
-  min-height: 700px;
+  min-height: 75vh;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 }
 
