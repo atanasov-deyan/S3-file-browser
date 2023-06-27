@@ -70,7 +70,7 @@ export const CreateFile = ({ onCancel }: ICreateFile) => {
       dispatch(trackFilesEvent({ eventTracker: FilesEventEnum.SYNC_FILES }));
      };
 
-     createFile(fileKey, content, onSuccessCreation);
+    createFile(fileKey, content, onSuccessCreation);
   };
   const setCurrentPath = (path: string) => setNewFile({ ...newFile, path });
   return (
