@@ -39,7 +39,7 @@ export const CreateFileForm = ({ handleSubmit, entityType, fileName }: ICreateFi
                 id={`${entityType}-input`}
                 name={entityType}
                 placeholder={`New ${entityType}`}
-                pattern="^[^/\\.\s]+$"
+                pattern='^[^/\\.\s]+$'
                 onChange={(event) => setValue(event.currentTarget.value)}
                 onBlur={() => setTouched(true)}
                 required={true}
