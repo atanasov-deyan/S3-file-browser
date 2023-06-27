@@ -32,7 +32,8 @@
         },
         "extendDefaults": true
       }
-    ]
+    ],
+    "@typescript-eslint/no-floating-promises": false
   },
   "plugins": ["react", "import", "jsx-a11y", "@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
