@@ -4,7 +4,12 @@ import { setFileKeyToDelete } from "../store/uiState/reducer";
 
 import styles from './DeleteFile.module.css';
 
-export const DeleteFile = ({ fileKey }: { fileKey: string }) => {
+interface IDeleteFileProps {
+  fileKey: string,
+  closeModal: VoidFunction,
+}
+
+export const DeleteFile = ({ fileKey, closeModal }: IDeleteFileProps) => {
   const { allObjects } = useFilesState();
 
   const onDelete = () => {
@@ -12,7 +17,8 @@ export const DeleteFile = ({ fileKey }: { fileKey: string }) => {
   };
 
   const onCancel = () => {
-    dispatch(setFileKeyToDelete({ fileKey: null }))
+    closeModal();
+    dispatch(setFileKeyToDelete({ fileKey: null }));
   };
 
   return (

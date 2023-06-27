@@ -37,6 +37,7 @@ export const FileExplorerItem = ({ name }: IFileExplorerItemProps) => {
         navigate(`/${entityPath}`);
       } else {
         dispatch(openFilePreviewModal({ fileKey: entityPath }));
+        dispatch(setFileKeyToDelete({ fileKey: null }));
       }
     }
   };
