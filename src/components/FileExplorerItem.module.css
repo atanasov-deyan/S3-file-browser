@@ -15,10 +15,11 @@
 
 .icon {
   font-size: 32px;
+  color: var(--dodger-blue);
 }
 
-.folder-icon {
-  color: var(--blue-ribbon);
+.icon-selected {
+  color: var(--mine-shaft);
 }
 
 .item-name {
