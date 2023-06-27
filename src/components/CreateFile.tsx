@@ -16,6 +16,7 @@ interface ICreateFile {
   onCancel: VoidFunction;
 }
 
+// todo: add spinner for creation // either global, or to Create action
 export const CreateFile = ({ onCancel }: ICreateFile) => {
   const { pathname } = useLocation();
   // file names do not start with a slash

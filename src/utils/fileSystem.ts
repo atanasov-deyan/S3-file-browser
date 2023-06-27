@@ -1,5 +1,6 @@
 import { supportedFileExtensions, ROOT_DIR_NAME } from '../config';
 import { Dictionary } from '../definitions/Dictionary';
+import { FilesTree } from '../store/filesState/reducer';
 
 const filterDuplicates = (array: string[]): string[] => Array.from(
   new Set(array),
@@ -26,7 +27,7 @@ export const generateTree = (objectKeys: string[]): Dictionary<string[]> => {
 for (const object of objectKeys) {
   const path = object.split('/');
 
-  path.forEach((entry: string, i: number): void => {
+  path.forEach((entry, i) => {
     const parentNodePath = i === 0
       ? ROOT_DIR_NAME
       : `/${path.slice(0, i).join('/')}`;
@@ -40,17 +41,30 @@ for (const object of objectKeys) {
   return tree;
 };
 
-// export const generateTree = (objects: string[]) => {
-//   return objects.reduce((acc: Dictionary<string[]>, object: string): Dictionary<string[]> => {
-//     const objectPath = object.split('/');
+export const getNextAvailablePath = (userPath: string, filesTree: FilesTree): string => {
+  const path = userPath.split('/');
+  let nextAvailablePath: string | null = null;
 
-//     return objectPath.reduce((tree: Dictionary<string[]>, node: string, i: number): Dictionary<string[]> => {
-//       const parentNode = i === 0 ? '/' : objectPath[i - 1];
+  for (let i = path.length; i >= 0; i--) {
+    const redirect = path.slice(0, i).join('/');
+    if (redirect in filesTree && !nextAvailablePath) {
+      nextAvailablePath = redirect
+      break;
+    }
+  }
+  // const redirectTo = path.reduceRight((acc: string, curr: string, i: number): string => {
+  //   const redirectPath = path.slice(0, i).join('/');
 
-//       return {
-//         ...tree,
-//         [parentNode]: acc[parentNode] ? filterDuplicates([...tree[parentNode], node]) : [node],
-//       };
-//     }, acc);
-//   }, { '/': [] });
-// };
+  //   if (acc !== ROOT_DIR_NAME) {
+  //     return acc;
+  //   }
+
+  //   if (redirectPath in filesTree) {
+  //     return redirectPath;
+  //   }
+
+  //   return acc;
+  // }, '/');
+
+  return nextAvailablePath ?? ROOT_DIR_NAME;
+}

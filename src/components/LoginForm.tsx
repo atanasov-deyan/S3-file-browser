@@ -54,7 +54,7 @@ export const LoginForm = () => {
 
           <li className={styles.item}>
             <Button
-              htmlType="submit"
+              htmlType='submit'
               type='primary'
               size='large'
               disabled={isLoading}
