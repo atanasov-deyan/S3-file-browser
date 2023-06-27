@@ -10,6 +10,7 @@ import { dispatch } from '../../store/storeFacade';
 import { FilesEventEnum, trackFilesEvent } from '../../store/filesState/reducer';
 
 import styles from './HomePage.module.css';
+import { FilePreviewModal } from '../FilePreviewModal';
 
 export const HomePage = () => {
   useFilesEventTracker();
@@ -28,6 +29,8 @@ export const HomePage = () => {
 
           <CreateFileModal/>
           <FileExplorer/>
+
+          <FilePreviewModal/>
         </section>
       </main>
     </Layout>
