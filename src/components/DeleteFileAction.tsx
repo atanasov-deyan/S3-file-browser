@@ -16,6 +16,7 @@ export const DeleteFileAction = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // todo: do we need this?
     // if user changes current path clean up selected fileKey and close modal
     if (fileKeyToDelete) {
       dispatch(setFileKeyToDelete({ fileKey: null }))
