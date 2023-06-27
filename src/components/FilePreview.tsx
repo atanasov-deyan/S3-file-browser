@@ -1,5 +1,6 @@
-import { IObject } from '../definitions/IObject';
-import { useFileContent } from '../hooks.ts/fileHooks';
+import { ObjectKey } from 'aws-sdk/clients/s3';
+
+import { useFileContent } from '../hooks/fileHooks';
 import { dispatch } from '../store/storeFacade';
 import { closeFilePreviewModal } from '../store/uiState/reducer';
 import { Spin } from './layout/Spin';
@@ -8,7 +9,7 @@ import { Button } from './layout/Button';
 import styles from './FilePreview.module.css';
 
 interface IFilePreviewProps {
-  fileKey: IObject['Key'];
+  fileKey: ObjectKey;
 }
 
 const closeModal = () => {

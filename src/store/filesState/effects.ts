@@ -1,10 +1,10 @@
 import { AWSError } from 'aws-sdk';
+import { Object } from 'aws-sdk/clients/s3';
 
 import { s3Service } from '../../services/S3Service';
 import { dispatch } from '../storeFacade';
 import { createFileFailure, createFileRequest, createFileSuccess, filesFailure, filesRequest, filesSuccess } from './reducer';
 import { parseError } from '../../utils/parseError';
-import { Object } from 'aws-sdk/clients/s3';
 import { IObject } from '../../definitions/IObject';
 import { generateTree } from '../../utils/fileSystem';
 import { noop } from '../../utils/noop';

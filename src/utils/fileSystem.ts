@@ -26,7 +26,7 @@ export const generateTree = (objectKeys: string[]): Dictionary<string[]> => {
 for (const object of objectKeys) {
   const path = object.split('/');
 
-  path.forEach((entry: string, i: number): void => {
+  path.forEach((entry, i) => {
     const parentNodePath = i === 0
       ? ROOT_DIR_NAME
       : `/${path.slice(0, i).join('/')}`;
@@ -39,6 +39,7 @@ for (const object of objectKeys) {
 
   return tree;
 };
+
 
 // export const generateTree = (objects: string[]) => {
 //   return objects.reduce((acc: Dictionary<string[]>, object: string): Dictionary<string[]> => {

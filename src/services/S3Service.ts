@@ -1,5 +1,6 @@
-import AWS, { S3, AWSError } from 'aws-sdk';
-import { GetObjectOutput, ListObjectsV2Output, PutObjectOutput } from 'aws-sdk/clients/s3';
+import AWS, { S3 } from 'aws-sdk';
+import { DeleteObjectOutput, GetObjectOutput, ListObjectsV2Output, PutObjectOutput } from 'aws-sdk/clients/s3';
+
 import { AWSCredentials } from '../definitions/AWSCredentials';
 
 class S3Service {
@@ -82,7 +83,7 @@ class S3Service {
       return await this.#s3.getObject(params).promise();
   }
 
-  async deleteObject(key: string): Promise<void> {
+  async deleteObject(key: string): Promise<DeleteObjectOutput> {
     if (!this.#bucketName || !this.#s3) {
       throw new Error('S3 service not configured. Please call configureS3 method first.');
     }
@@ -92,12 +93,7 @@ class S3Service {
       Key: key,
     };
 
-    try {
-      await this.#s3.deleteObject(params).promise();
-      console.log('Object deleted successfully');
-    } catch (error) {
-      console.error('Error occurred while deleting object:', error);
-    }
+    return await this.#s3.deleteObject(params).promise();
   }
 }
 

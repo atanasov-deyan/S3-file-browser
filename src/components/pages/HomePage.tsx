@@ -5,13 +5,13 @@ import { LeftSidebar } from '../LeftSidebar';
 import { FileExplorer } from '../FileExplorer';
 import { HomePageBreadcrumbs } from '../HomePageBreadcrumbs';
 import { CreateFileModal } from '../CreateFileModal';
-import { useFilesEventTracker } from '../../hooks.ts/fileHooks';
+import { useFilesEventTracker } from '../../hooks/fileHooks';
 import { dispatch } from '../../store/storeFacade';
 import { FilesEventEnum, trackFilesEvent } from '../../store/filesState/reducer';
-
-import styles from './HomePage.module.css';
 import { FilePreviewModal } from '../FilePreviewModal';
 import { DeleteFileAction } from '../DeleteFileAction';
+
+import styles from './HomePage.module.css';
 
 export const HomePage = () => {
   useFilesEventTracker();
