@@ -6,7 +6,7 @@ import { IObject } from '../../definitions/IObject';
 import { Dictionary } from '../../definitions/Dictionary';
 import { ROOT_DIR_NAME } from '../../config';
 
-type FilesTree = Dictionary<string[]>;
+export type FilesTree = Dictionary<string[]>;
 
 export enum FilesEventEnum {
   SYNC_FILES = 'SYNC_FILES',
@@ -40,6 +40,9 @@ export const filesSlice = createSlice({
     createFileRequest: noop,
     createFileSuccess: noop,
     createFileFailure: requestFailureActionReducer,
+    deleteFileRequest: noop,
+    deleteFileSuccess: noop,
+    deleteFileFailure: requestFailureActionReducer,
     trackFilesEvent: (state, action: PayloadAction<{ eventTracker: FilesEventEnum | null}>) => {
       state.eventTracker = action.payload.eventTracker;
     },
@@ -53,6 +56,9 @@ export const {
   createFileRequest,
   createFileSuccess,
   createFileFailure,
+  deleteFileRequest,
+  deleteFileSuccess,
+  deleteFileFailure,
   trackFilesEvent,
 } = filesSlice.actions;
 

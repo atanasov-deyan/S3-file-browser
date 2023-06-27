@@ -1,9 +1,9 @@
 import { AWSError } from 'aws-sdk';
-import { Object } from 'aws-sdk/clients/s3';
+import { Object, ObjectKey } from 'aws-sdk/clients/s3';
 
 import { s3Service } from '../../services/S3Service';
 import { dispatch } from '../storeFacade';
-import { createFileFailure, createFileRequest, createFileSuccess, filesFailure, filesRequest, filesSuccess } from './reducer';
+import { createFileFailure, createFileRequest, createFileSuccess, deleteFileFailure, deleteFileRequest, deleteFileSuccess, filesFailure, filesRequest, filesSuccess } from './reducer';
 import { parseError } from '../../utils/parseError';
 import { IObject } from '../../definitions/IObject';
 import { generateTree } from '../../utils/fileSystem';
@@ -25,7 +25,7 @@ export const getAllFiles = async (): Promise<void> => {
     const filesTree = generateTree(
       allObjects
         .map(o => o.Key)
-        .filter((str: string | undefined): str is string => !!str),
+        .filter((key: string | undefined): key is string => !!key),
     );
 
     dispatch(filesSuccess({ allObjects, filesTree }));
@@ -34,7 +34,7 @@ export const getAllFiles = async (): Promise<void> => {
   }
 };
 
-export const createFile = async (key: string, content: string, callback: VoidFunction = noop) => {
+export const createFile = async (key: ObjectKey, content: string, callback: VoidFunction = noop) => {
   dispatch(createFileRequest());
 
   try {
@@ -43,5 +43,23 @@ export const createFile = async (key: string, content: string, callback: VoidFun
     callback();
   } catch (e) {
     dispatch(createFileFailure(parseError(e as AWSError)));
+  }
+};
+
+export const deleteFile = async (entityPath: string, allObjects: IObject[], callback: VoidFunction = noop) => {
+  dispatch(deleteFileRequest());
+
+  const objectKeysToDelete = allObjects
+    .map(({ Key }) => Key)
+    .filter((key: string | undefined): key is string => !!key)
+    // in case we are deleting a dir instead of a file, we do not want to leave empty dirs
+    .filter((key) => key.startsWith(entityPath));
+
+  try {
+    await Promise.all(objectKeysToDelete.map(key => s3Service.deleteObject(key)))
+    dispatch(deleteFileSuccess());
+    callback();
+  } catch (e) {
+    dispatch(deleteFileFailure(parseError(e as AWSError)));
   }
 };
