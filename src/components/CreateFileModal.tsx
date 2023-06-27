@@ -16,14 +16,11 @@ export const CreateFileModal = () => {
   <div style={{ marginBottom: 24 }}>
     <Button type='default' size='small' onClick={() => setIsVisible(true)}>
       <Icon name='plus' className={styles.icon}/>
-      &nbsp;
       Create
     </Button>
     {isVisible && (
       <Modal>
-        <div className={styles['modal-content']}>
-          <CreateFile onCancel={closeModal}/>
-        </div>
+        <CreateFile onCancel={closeModal}/>
       </Modal>
     )}
   </div>

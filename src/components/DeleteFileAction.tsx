@@ -34,15 +34,12 @@ export const DeleteFileAction = () => {
         disabled={!fileKeyToDelete}
         onClick={() => setIsVisible(true)}
         >
-        <Icon name='trash-o'/>
-        &nbsp;
+        <Icon name='trash-o' className={styles.icon}/>
         Delete
       </Button>
       {isVisible && fileKeyToDelete && (
         <Modal>
-          <div className={styles.modal}>
-            <DeleteFile fileKey={fileKeyToDelete}/>
-          </div>
+          <DeleteFile fileKey={fileKeyToDelete} closeModal={() => setIsVisible(false)}/>
         </Modal>
       )
       }
