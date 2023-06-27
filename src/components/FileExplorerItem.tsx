@@ -31,7 +31,7 @@ export const FileExplorerItem = ({ name }: IFileExplorerItemProps) => {
         const folderPath = pathname === ROOT_DIR_NAME ? '' : pathname;
         navigate(`${folderPath}/${name}`);
       } else {
-        // remove the initial / to obtain fileKey
+        // remove the initial "/" to obtain fileKey
         const folderPath = pathname.slice(1);
         const fileKey = pathname === ROOT_DIR_NAME ? name : `${folderPath}/${name}`;
         dispatch(openFilePreviewModal({ fileKey }));
