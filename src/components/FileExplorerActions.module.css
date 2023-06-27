@@ -1,0 +1,6 @@
+.actions-container {
+  display: flex;
+  width: 200px;
+  justify-content: space-evenly;
+  margin-bottom: 24px;
+}

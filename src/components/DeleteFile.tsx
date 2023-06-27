@@ -1,9 +1,9 @@
-import { dispatch, useFilesState, useLoadingState } from "../store/storeFacade"
-import { Button } from "./layout/Button";
-import { setFileKeyToDelete } from "../store/uiState/reducer";
-import { FilesEventEnum, trackFilesEvent } from "../store/filesState/reducer";
-import { deleteFile } from "../store/filesState/effects";
-import { Spin } from "./layout/Spin";
+import { dispatch, useFilesState, useLoadingState } from '../store/storeFacade';
+import { Button } from './layout/Button';
+import { setFileKeyToDelete } from '../store/uiState/reducer';
+import { FilesEventEnum, trackFilesEvent } from '../store/filesState/reducer';
+import { deleteFile } from '../store/filesState/effects';
+import { Spin } from './layout/Spin';
 
 import styles from './DeleteFile.module.css';
 
@@ -43,7 +43,7 @@ export const DeleteFile = ({ fileKey, closeModal }: IDeleteFileProps) => {
   return (
     <article className={styles.container}>
       <h1>Are you sure?</h1>
-
+      {/* add proper messages for files and dirs */}
       <p>Note that any subfolders and content will also be removed</p>
 
       <div className={styles.actions}>

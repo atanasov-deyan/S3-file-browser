@@ -13,7 +13,7 @@ interface IErrorMessageProps {
 }
 
 export const ErrorMessage = ({ error, showError }: IErrorMessageProps) => (showError && !!error) && (
-  <span role="alert" id={`${error.code}-error`} className={style['error-message']}>
+  <span role='alert' id={`${error.code}-error`} className={style['error-message']}>
     {error.message}
   </span>
 );
