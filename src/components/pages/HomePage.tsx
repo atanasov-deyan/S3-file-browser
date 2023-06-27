@@ -11,6 +11,7 @@ import { FilesEventEnum, trackFilesEvent } from '../../store/filesState/reducer'
 
 import styles from './HomePage.module.css';
 import { FilePreviewModal } from '../FilePreviewModal';
+import { DeleteFileAction } from '../DeleteFileAction';
 
 export const HomePage = () => {
   useFilesEventTracker();
@@ -27,7 +28,11 @@ export const HomePage = () => {
         <section className={styles.content}>
           <HomePageBreadcrumbs/>
 
-          <CreateFileModal/>
+          <div style={{ display: 'flex', width: 200, justifyContent: 'space-evenly' }}>
+            <CreateFileModal/>
+
+            <DeleteFileAction/>
+          </div>
           <FileExplorer/>
 
           <FilePreviewModal/>
