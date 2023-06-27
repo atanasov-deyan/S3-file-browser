@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { dispatch, useFilesState } from "../store/storeFacade"
 import { Button } from "./layout/Button";
 import { setFileKeyToDelete } from "../store/uiState/reducer";
