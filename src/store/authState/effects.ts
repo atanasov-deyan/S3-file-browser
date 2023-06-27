@@ -57,7 +57,8 @@ export const authenticate = async (credentials: AWSCredentials, navigate: Naviga
     await s3Service.configureS3(credentials);
     dispatch(authSuccess());
     await storeCredentials(credentials);
-    navigate('/');
+    // todo: refactor and pass down a redirect cb
+    // navigate('/');
   } catch (e) {
     dispatch(authFailure(parseError(e as AWSError)));
     navigate('/login');

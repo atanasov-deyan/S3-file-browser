@@ -28,12 +28,13 @@ export const Breadcrumbs = ({ pathname }: IBreadcrumbProps) => {
           >
             {label}
             &nbsp;
-            {(i < crumbs.length - 1) && (
-              <>/</>
-            )}
+            <>/</>
           </Link>
         ))
       }
+      <span className={styles.current} title='current directory'>
+        {path.at(-1)}
+      </span>
     </div>
   );
 };
