@@ -38,10 +38,11 @@ export const FilePreview = ({ fileKey }: IFilePreviewProps) => {
         >
           Close
         </Button>
-      <h1>File name: {fileName}</h1>
+      <h1 className={styles.heading}>{fileName}</h1>
 
-      <h4>Content:</h4>
-      <p>{fileContent}</p>
+      <div className={styles.content}>
+        <p>{fileContent}</p>
+      </div>
     </article>
   );
 };
