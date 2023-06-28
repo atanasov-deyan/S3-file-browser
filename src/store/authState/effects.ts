@@ -4,7 +4,7 @@ import { NavigateFunction } from 'react-router-dom';
 import { AWSCredentials } from '../../definitions/AWSCredentials';
 import { s3Service } from '../../services/S3Service';
 import { dispatch } from '../storeFacade';
-import { authFailure, authRequest, authSuccess } from './reducer';
+import { authFailure, authRequest, authSuccess, signOut } from './reducer';
 import { parseError } from '../../utils/parseError';
 import { decryptString, encryptString } from '../../utils/encryption';
 
@@ -21,6 +21,12 @@ const storeCredentials = async (credentials: AWSCredentials): Promise<void> => {
   } catch (error) {
     console.warn('Something went wrong when trying to securely store your credentials');
   }
+};
+
+const forgetCredentials = () => {
+  localStorage.removeItem('accessKeyId');
+  localStorage.removeItem('secretAccessKey');
+  localStorage.removeItem('bucketName');
 };
 
 const getStoredCredentials = async (): Promise<AWSCredentials|undefined> => {
@@ -55,8 +61,8 @@ export const authenticate = async (credentials: AWSCredentials, navigate: Naviga
 
   try {
     await s3Service.configureS3(credentials);
-    dispatch(authSuccess());
     await storeCredentials(credentials);
+    dispatch(authSuccess());
 
     if (successRedirectPath) {
       navigate(successRedirectPath);
@@ -66,3 +72,8 @@ export const authenticate = async (credentials: AWSCredentials, navigate: Naviga
     navigate('/login');
   }
 };
+
+export const logout = () => {
+  forgetCredentials();
+  dispatch(signOut());
+}

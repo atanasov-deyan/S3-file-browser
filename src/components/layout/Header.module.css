@@ -4,6 +4,12 @@
   height: 50px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   background: var(--white);
   padding: 4px 8px;
+}
+
+.logout {
+  margin-left: auto;
+  margin-right: 12px;
 }
