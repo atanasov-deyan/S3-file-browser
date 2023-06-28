@@ -1,4 +1,4 @@
-import './init';
+import './init.js';
 
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';

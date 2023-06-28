@@ -18,10 +18,11 @@ export const DeleteFileAction = () => {
   useEffect(() => {
     // if user changes current path clean up selected fileKey and close modal
     if (fileKeyToDelete) {
-      dispatch(setFileKeyToDelete({ fileKey: null }))
+      dispatch(setFileKeyToDelete({ fileKey: null }));
       setIsVisible(false);
     }
-  }, [pathname])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   return (
     <>
@@ -41,5 +42,5 @@ export const DeleteFileAction = () => {
       )
       }
     </>
-  )
+  );
 };

@@ -31,5 +31,5 @@ export const CreateNewEntityActions = ({ setNewEntity, isDisabled }: ICreateNewE
           New file
         </Button>
     </div>
-  )
-}
+  );
+};

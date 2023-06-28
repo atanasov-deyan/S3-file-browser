@@ -1,9 +1,9 @@
 import React from 'react';
 
 import s3Logo from '../../../public/images/logo.svg';
+import { LogoutAction } from '../LogoutAction';
 
 import styles from './Header.module.css';
-import { LogoutAction } from '../LogoutAction';
 
 export const Header = () => (
   <header className={styles.header}>

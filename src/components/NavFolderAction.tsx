@@ -41,5 +41,5 @@ export const NavFolderAction = ({
         {name}
       </div>
     </Button>
-  )
-}
+  );
+};

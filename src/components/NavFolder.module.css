@@ -6,5 +6,5 @@
 
 .active {
   background-color: var(--blue-ribbon);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 }

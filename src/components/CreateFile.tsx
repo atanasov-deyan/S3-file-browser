@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { Button } from './layout/Button';
-import { entityTypes } from '../config';
+import { ROOT_DIR_NAME, entityTypes } from '../config';
 import { createFile } from '../store/filesState/effects';
 import { CreateEntityForm } from './CreateEntityForm';
 import { CreateFileBreadcrumbs } from './CreateFileBreadcrumbs';
@@ -61,7 +61,9 @@ export const CreateFile = ({ onCancel }: ICreateFile) => {
 
   const onCreateNewFile = (): void => {
     const { content } = newFile;
-    const fileKey = `${pathname.slice(1)}${newFile.path}`;
+    const fileKey = pathname === ROOT_DIR_NAME
+      ? newFile.path.slice(1)
+      : `${pathname.slice(1)}${newFile.path}`;
 
      const onSuccessCreation = () => {
       onCancel();

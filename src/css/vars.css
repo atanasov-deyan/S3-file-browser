@@ -29,4 +29,7 @@
   --base-spacing: 16px;
   --large-spacing: 24px;
   --big-spacing: 32px;
+
+  /* border-radius */
+  --border-radius: 4px;
 }

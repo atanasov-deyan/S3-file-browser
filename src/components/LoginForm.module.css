@@ -25,7 +25,7 @@
 .input {
   height: 34px;
   padding: var(--small-spacing);
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   border: 1px solid var(--silver);
   font-size: var(--font-size-x-large);
   color: var(--black);

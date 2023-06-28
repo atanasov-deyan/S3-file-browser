@@ -56,7 +56,7 @@ export const deleteFile = async (entityPath: string, allObjects: IObject[], call
     .filter((key) => key.startsWith(entityPath));
 
   try {
-    await Promise.all(objectKeysToDelete.map(key => s3Service.deleteObject(key)))
+    await Promise.all(objectKeysToDelete.map(key => s3Service.deleteObject(key)));
     dispatch(deleteFileSuccess());
     callback();
   } catch (e) {

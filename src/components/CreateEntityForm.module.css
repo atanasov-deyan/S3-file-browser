@@ -16,6 +16,7 @@
 
 .input {
   width: 70px;
+  margin-bottom: var(--small-spacing);
 }
 
 .input-wrapper {

@@ -10,7 +10,7 @@ interface ICreateFileBreadcrumbsProps {
 
 export const CreateFileBreadcrumbs = ({ currentPath, setCurrentPath }: ICreateFileBreadcrumbsProps) => {
   const newFolderPath = currentPath.split('/');
-  const pathToDisplay = newFolderPath.slice(0, newFolderPath.length - 1)
+  const pathToDisplay = newFolderPath.slice(0, newFolderPath.length - 1);
   const currentLocation = newFolderPath.at(-1);
 
   return (

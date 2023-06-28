@@ -56,5 +56,5 @@ export const DeleteFile = ({ fileKey, closeModal }: IDeleteFileProps) => {
         </Button>
       </div>
     </article>
-  )
-}
+  );
+};

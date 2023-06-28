@@ -23,7 +23,7 @@ export const FileExplorerItem = ({ name }: IFileExplorerItemProps) => {
   const isDir = !isFile(name);
   const iconName = isDir ? 'folder' : 'file-o';
   const entityPath = pathname === ROOT_DIR_NAME ? name : `${pathname.slice(1)}/${name}`;
-  const isSelected = entityPath === fileKeyToDelete
+  const isSelected = entityPath === fileKeyToDelete;
 
   const iconClass = isSelected ? toClassName([styles.icon, styles['icon-selected']]) : styles.icon;
 
@@ -33,7 +33,6 @@ export const FileExplorerItem = ({ name }: IFileExplorerItemProps) => {
     }
     if (e.detail === 2) {
       if (isDir) {
-        const folderPath = pathname === ROOT_DIR_NAME ? '' : pathname;
         navigate(`/${entityPath}`);
       } else {
         dispatch(openFilePreviewModal({ fileKey: entityPath }));

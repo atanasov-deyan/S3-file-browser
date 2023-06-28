@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "start": "npm run dev",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
+    "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix --quiet",
     "typecheck": "tsc --noEmit",
     "test": "vitest"
   },

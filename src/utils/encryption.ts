@@ -16,7 +16,7 @@ async function importKey(): Promise<CryptoKey> {
   );
 }
 
-export async function encryptString(data: string): Promise<string> {
+export const encryptString = async (data: string): Promise<string> => {
   const iv = crypto.getRandomValues(new Uint8Array(12));
   const encodedData = new TextEncoder().encode(data);
   const key = await importKey();
@@ -31,9 +31,9 @@ export async function encryptString(data: string): Promise<string> {
   return Array.from(combinedData)
     .map((byte) => String.fromCharCode(byte))
     .join('');
-}
+};
 
-export async function decryptString(encryptedData: string | null): Promise<string> {
+export const decryptString = async (encryptedData: string | null): Promise<string> => {
   if (!encryptedData) {
     throw new Error('Please provide a string to decrypt');
   }
@@ -49,4 +49,4 @@ export async function decryptString(encryptedData: string | null): Promise<strin
     cipherText,
   );
   return new TextDecoder().decode(decryptedData);
-}
+};

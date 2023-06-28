@@ -24,7 +24,7 @@ export const authSlice = createSlice({
     },
     signOut: (state) => {
       state.isAuthorized = false;
-    }
+    },
   },
 });
 

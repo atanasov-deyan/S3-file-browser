@@ -1,4 +1,4 @@
-import {  useUiState } from '../store/storeFacade';
+import { useUiState } from '../store/storeFacade';
 import { FilePreview } from './FilePreview';
 import { Modal } from './layout/Modal';
 

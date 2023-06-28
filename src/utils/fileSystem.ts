@@ -54,4 +54,4 @@ export const getNextAvailablePath = (userPath: string, filesTree: FilesTree): st
   }
 
   return nextAvailablePath ?? ROOT_DIR_NAME;
-}
+};

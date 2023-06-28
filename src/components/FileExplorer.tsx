@@ -20,10 +20,10 @@ export const FileExplorer = () => {
     const tryToRedirect = !isLoading && typeof isLoading !== undefined;
     if (tryToRedirect && !filesTree[pathname]) {
       const redirectTo = getNextAvailablePath(pathname, filesTree);
-      console.log('are you there')
       navigate(redirectTo);
     }
-  }, [isLoading, pathname, filesTree])
+  /* eslint-disable-next-line react-hooks/exhaustive-deps */
+  }, [isLoading, pathname, filesTree]);
 
   if (isLoading) {
     return (

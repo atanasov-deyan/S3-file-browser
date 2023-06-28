@@ -49,14 +49,21 @@ const getStoredCredentials = async (): Promise<AWSCredentials|undefined> => {
   }
 };
 
-export const validateStoredAuthentication = async (navigate: NavigateFunction, successRedirectPath?: string): Promise<void> => {
+export const validateStoredAuthentication = async (
+  navigate: NavigateFunction,
+  successRedirectPath?: string,
+): Promise<void> => {
   const credentials = await getStoredCredentials();
   if (credentials) {
     await authenticate(credentials, navigate, successRedirectPath);
   }
 };
 
-export const authenticate = async (credentials: AWSCredentials, navigate: NavigateFunction, successRedirectPath?: string): Promise<void> => {
+export const authenticate = async (
+  credentials: AWSCredentials,
+  navigate: NavigateFunction,
+  successRedirectPath?: string,
+): Promise<void> => {
   dispatch(authRequest());
 
   try {
@@ -76,4 +83,4 @@ export const authenticate = async (credentials: AWSCredentials, navigate: Naviga
 export const logout = () => {
   forgetCredentials();
   dispatch(signOut());
-}
+};
