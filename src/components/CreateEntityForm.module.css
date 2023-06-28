@@ -21,3 +21,7 @@
 .input-wrapper {
   display: flex;
 }
+
+.add-action {
+  margin-right: auto;
+}

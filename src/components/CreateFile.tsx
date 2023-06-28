@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { Button } from './layout/Button';
 import { entityTypes } from '../config';
 import { createFile } from '../store/filesState/effects';
-import { CreateFileForm } from './CreateFileForm';
+import { CreateEntityForm } from './CreateEntityForm';
 import { CreateFileBreadcrumbs } from './CreateFileBreadcrumbs';
 import { CreateNewEntityActions } from './CreateNewEntityActions';
 import { dispatch, useLoadingState } from '../store/storeFacade';
@@ -80,7 +80,7 @@ export const CreateFile = ({ onCancel }: ICreateFile) => {
 
       <CreateNewEntityActions isDisabled={!!fileName} setNewEntity={setNewEntity}/>
 
-      <CreateFileForm
+      <CreateEntityForm
         handleSubmit={onFormSubmit}
         entityType={newEntity}
         fileName={fileName}
