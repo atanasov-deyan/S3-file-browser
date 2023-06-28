@@ -22,9 +22,12 @@ export const authSlice = createSlice({
     authFailure: (state, action: PayloadAction<unknown>) => {
       state.isAuthorized = false;
     },
+    signOut: (state) => {
+      state.isAuthorized = false;
+    }
   },
 });
 
-export const { authRequest, authSuccess, authFailure } = authSlice.actions;
+export const { authRequest, authSuccess, authFailure, signOut } = authSlice.actions;
 
 export const authStateReducer = authSlice.reducer;
