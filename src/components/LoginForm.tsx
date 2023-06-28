@@ -24,7 +24,7 @@ export const LoginForm = () => {
     if (typeof accessKeyId !== 'string' || typeof secretAccessKey !== 'string' || typeof bucketName !== 'string') {
       return;
     }
-    await authenticate({ accessKeyId, secretAccessKey, bucketName }, navigate);
+    await authenticate({ accessKeyId, secretAccessKey, bucketName }, navigate, '/');
   };
 
   // todo: abstract Form and Input into layout components

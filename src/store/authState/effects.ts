@@ -50,15 +50,17 @@ export const validateStoredAuthentication = async (navigate: NavigateFunction): 
   }
 };
 
-export const authenticate = async (credentials: AWSCredentials, navigate: NavigateFunction): Promise<void> => {
+export const authenticate = async (credentials: AWSCredentials, navigate: NavigateFunction, successRedirectPath?: string): Promise<void> => {
   dispatch(authRequest());
 
   try {
     await s3Service.configureS3(credentials);
     dispatch(authSuccess());
     await storeCredentials(credentials);
-    // todo: refactor and pass down a redirect cb
-    // navigate('/');
+
+    if (successRedirectPath) {
+      navigate(successRedirectPath);
+    }
   } catch (e) {
     dispatch(authFailure(parseError(e as AWSError)));
     navigate('/login');

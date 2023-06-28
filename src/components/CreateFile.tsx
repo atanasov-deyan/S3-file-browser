@@ -7,7 +7,7 @@ import { createFile } from '../store/filesState/effects';
 import { CreateFileForm } from './CreateFileForm';
 import { CreateFileBreadcrumbs } from './CreateFileBreadcrumbs';
 import { CreateNewEntityActions } from './CreateNewEntityActions';
-import { dispatch } from '../store/storeFacade';
+import { dispatch, useLoadingState } from '../store/storeFacade';
 import { FilesEventEnum, trackFilesEvent } from '../store/filesState/reducer';
 
 import styles from './CreateFile.module.css';
@@ -16,8 +16,8 @@ interface ICreateFile {
   onCancel: VoidFunction;
 }
 
-// todo: add spinner for creation // either global, or to Create action
 export const CreateFile = ({ onCancel }: ICreateFile) => {
+  const isLoading = useLoadingState('files/createFile');
   const { pathname } = useLocation();
   // file names do not start with a slash
   const path = pathname.slice(1);
@@ -91,7 +91,13 @@ export const CreateFile = ({ onCancel }: ICreateFile) => {
       />
 
       <div className={styles['modal-actions']}>
-        <Button type='primary' size='small' disabled={!fileName} onClick={onCreateNewFile}>
+        <Button
+          type='primary'
+          size='small'
+          disabled={!fileName || isLoading}
+          loading={isLoading}
+          onClick={onCreateNewFile}
+        >
           Create
         </Button>
         &nbsp;
