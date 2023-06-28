@@ -1,36 +1,49 @@
 import { Button } from './layout/Button';
+import { Icon } from './layout/Icon';
+
+import styles from './CreateFileBreadcrumbs.module.css';
 
 interface ICreateFileBreadcrumbsProps {
-  pathname: string;
   currentPath: string;
   setCurrentPath: (value: string) => void;
 }
 
-export const CreateFileBreadcrumbs = ({ pathname, currentPath, setCurrentPath }: ICreateFileBreadcrumbsProps) => {
-  const newFolderPath = currentPath
-    .replace(pathname, '')
-    .split('/')
-    .filter(Boolean);
+export const CreateFileBreadcrumbs = ({ currentPath, setCurrentPath }: ICreateFileBreadcrumbsProps) => {
+  const newFolderPath = currentPath.split('/');
+  const pathToDisplay = newFolderPath.slice(0, newFolderPath.length - 1)
+  const currentLocation = newFolderPath.at(-1);
 
   return (
-  <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-    {newFolderPath.map((path, i) => (
+  <div className={styles.container}>
+    {pathToDisplay.map((path, i) => (
       <Button
         size='small'
         type='text'
-        key={i}
+        key={pathToDisplay.slice(0, i + 1).join('/')}
         onClick={() => {
-          const path = newFolderPath.slice(0, i + 1).join('/');
-          const newPath = pathname === '/' ? `/${path}` : `${pathname}/${path}`;
+          const newPath = newFolderPath
+            .slice(0, i + 1)
+            .join('/');
+
           setCurrentPath(newPath);
         }}
       >
-        {path}
+        {i === 0
+          ? <Icon name='home' className={styles.root} title={'/'}/>
+          : path
+        }
         &nbsp;
         /
-        &nbsp;
       </Button>
     ))}
+    <Button
+      size='small'
+      type='text'
+      className={styles.current}
+      title='current'
+    >
+      {currentLocation}
+    </Button>
   </div>
   );
 };

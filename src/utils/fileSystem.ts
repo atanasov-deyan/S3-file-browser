@@ -64,7 +64,7 @@ export const getNextAvailablePath = (userPath: string, filesTree: FilesTree): st
   //   }
 
   //   return acc;
-  // }, '/');
+  // }, ROOT_DIR_NAME);
 
   return nextAvailablePath ?? ROOT_DIR_NAME;
 }

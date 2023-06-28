@@ -19,9 +19,8 @@ interface ICreateFile {
 export const CreateFile = ({ onCancel }: ICreateFile) => {
   const isLoading = useLoadingState('files/createFile');
   const { pathname } = useLocation();
-  // file names do not start with a slash
-  const path = pathname.slice(1);
-  const [newFile, setNewFile] = useState({ path, content: '' });
+
+  const [newFile, setNewFile] = useState({ path: '', content: '' });
   const [newEntity, setNewEntity] = useState('');
 
   const onFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -61,10 +60,8 @@ export const CreateFile = ({ onCancel }: ICreateFile) => {
   const fileName = newFile.path.endsWith('.txt') ? newFile.path.split('/').at(-1) : undefined;
 
   const onCreateNewFile = (): void => {
-    const { path, content } = newFile;
-    const fileKey = path.startsWith('/')
-     ? newFile.path.slice(1)
-     : newFile.path;
+    const { content } = newFile;
+    const fileKey = `${pathname.slice(1)}${newFile.path}`;
 
      const onSuccessCreation = () => {
       onCancel();
@@ -77,7 +74,6 @@ export const CreateFile = ({ onCancel }: ICreateFile) => {
   return (
     <div className={styles.content}>
       <CreateFileBreadcrumbs
-        pathname={path}
         currentPath={newFile.path}
         setCurrentPath={setCurrentPath}
       />
