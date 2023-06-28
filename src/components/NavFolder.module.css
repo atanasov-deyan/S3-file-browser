@@ -1,7 +1,7 @@
 @import '../css/vars.css';
 
 .sub-folders {
-  margin-left: 16px;
+  margin-left: var(--base-spacing);
 }
 
 .active {

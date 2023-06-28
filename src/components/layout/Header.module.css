@@ -6,10 +6,10 @@
   flex-direction: row;
   align-items: center;
   background: var(--white);
-  padding: 4px 8px;
+  padding: var(--tiny-spacing) var(--small-spacing);
 }
 
 .logout {
   margin-left: auto;
-  margin-right: 12px;
+  margin-right: var(--medium-spacing);
 }

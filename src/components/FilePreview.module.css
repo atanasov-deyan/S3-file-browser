@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   width: 75vw;
-  padding: 24px;
+  padding: var(--large-spacing);
   background-color: var(--athens-grey);
   min-height: 75vh;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
@@ -15,13 +15,13 @@
 
 .heading {
   border-bottom: 1px solid var(--silver);
-  padding-bottom: 4px;
+  padding-bottom: var(--tiny-spacing);
 }
 
 .content {
   background-color: var(--mischka-grey);
   border-radius: 4px;
-  padding: 0 8px;
+  padding: 0 var(--small-spacing);
   overflow-y: auto;
   height: 100%;
 }

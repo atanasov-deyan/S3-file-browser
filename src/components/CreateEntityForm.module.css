@@ -5,7 +5,7 @@
   flex-direction: column;
   height: 75%;
   margin: 16px 0px;
-  padding: 16px;
+  padding: var(--base-spacing);
   background-color: var(--athens-grey);
 }
 

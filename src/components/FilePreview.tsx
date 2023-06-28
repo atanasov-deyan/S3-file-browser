@@ -33,7 +33,6 @@ export const FilePreview = ({ fileKey }: IFilePreviewProps) => {
     <article className={styles['file-content']}>
       <Button
           type='primary'
-          size='small'
           onClick={closeModal}
           className={styles.close}
         >

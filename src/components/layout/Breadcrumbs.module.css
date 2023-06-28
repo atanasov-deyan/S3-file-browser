@@ -3,7 +3,7 @@
 .breadcrumbs {
   color: var(--dodger-blue);
   font-size: var(--font-size-x-large);
-  margin-bottom: 24px;
+  margin-bottom: var(--large-spacing);
 }
 
 .root {
@@ -13,7 +13,7 @@
 .link {
   color: var(--dodger-blue);
   text-decoration: none;
-  margin-right: 4px;
+  margin-right: var(--tiny-spacing);
 }
 
 .current {

@@ -71,7 +71,7 @@ export const NavFolder = ({ name, parentPath }: INavFolderProps) => {
       </li>
 
       {isExpanded && (
-        <NavFolderList className={styles['sub-folder']} folderPath={path}/>
+        <NavFolderList className={styles['sub-folders']} folderPath={path}/>
       )}
     </>
   );

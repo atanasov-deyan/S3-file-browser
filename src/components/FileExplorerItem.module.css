@@ -9,7 +9,7 @@
   flex-direction: column;
   align-content: center;
   align-items: center;
-  margin-right: 4px;
+  margin-right: var(--tiny-spacing);
   min-width: 80px;
 }
 

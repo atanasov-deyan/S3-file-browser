@@ -5,5 +5,5 @@
   height: 100vh;
   width: 200px;
   min-width: 200px;
-  padding: 24px 8px;
+  padding: var(--large-spacing) var(--small-spacing);
 }
