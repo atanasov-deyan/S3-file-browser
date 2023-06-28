@@ -52,19 +52,6 @@ export const getNextAvailablePath = (userPath: string, filesTree: FilesTree): st
       break;
     }
   }
-  // const redirectTo = path.reduceRight((acc: string, curr: string, i: number): string => {
-  //   const redirectPath = path.slice(0, i).join('/');
-
-  //   if (acc !== ROOT_DIR_NAME) {
-  //     return acc;
-  //   }
-
-  //   if (redirectPath in filesTree) {
-  //     return redirectPath;
-  //   }
-
-  //   return acc;
-  // }, '/');
 
   return nextAvailablePath ?? ROOT_DIR_NAME;
 }

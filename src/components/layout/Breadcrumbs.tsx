@@ -20,7 +20,7 @@ export const Breadcrumbs = ({ pathname }: IBreadcrumbProps) => {
 
   return !isRootDir && (
     <div className={styles.breadcrumbs}>
-      {crumbs.map(({ label, path }, i) => (
+      {crumbs.map(({ label, path }) => (
           <Link
             key={path}
             to={path}

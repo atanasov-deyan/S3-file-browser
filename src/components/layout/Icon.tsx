@@ -7,8 +7,13 @@ interface IIconProps {
   name: string;
   className?: string;
   style?: CSSProperties;
+  title?: string;
 }
 
-export const Icon = ({ className, name, style }: IIconProps) => (
-  <span className={toClassName([styles.icon, className, `icon-${name}`])} style={style}/>
+export const Icon = ({ className, name, title, style }: IIconProps) => (
+  <span
+    className={toClassName([styles.icon, className, `icon-${name}`])}
+    style={style}
+    title={title}
+  />
 );
