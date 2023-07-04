@@ -48,7 +48,7 @@ export const getNextAvailablePath = (userPath: string, filesTree: FilesTree): st
   for (let i = path.length; i >= 0; i--) {
     const redirect = path.slice(0, i).join('/');
     if (redirect in filesTree && !nextAvailablePath) {
-      nextAvailablePath = redirect
+      nextAvailablePath = redirect;
       break;
     }
   }

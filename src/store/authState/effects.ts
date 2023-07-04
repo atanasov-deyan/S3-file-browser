@@ -45,7 +45,7 @@ const getStoredCredentials = async (): Promise<AWSCredentials|undefined> => {
       bucketName,
     };
   } catch (error) {
-    console.warn('Something went wrong when trying to securely store your credentials');
+    console.warn('Something went wrong when trying to get securely stored credentials');
   }
 };
 
