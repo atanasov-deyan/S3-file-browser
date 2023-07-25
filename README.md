@@ -1,5 +1,5 @@
 # S3 bucket browser
-A simple implementation of an explorer of an S3 bucket. It supports Create, Read and Delete operations as well as browsing the bucket as a filesystem.
+A simple implementation of an AWS S3 bucker file explorer. It supports Create, Read and Delete operations as well as browsing the bucket as a filesystem.
 
 ## Installation
 use your package manager of choice, e.g. npm:
