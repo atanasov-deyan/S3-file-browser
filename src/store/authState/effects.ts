@@ -23,7 +23,7 @@ const storeCredentials = async (credentials: AWSCredentials): Promise<void> => {
   }
 };
 
-const forgetCredentials = () => {
+const forgetStoredCredentials = () => {
   localStorage.removeItem('accessKeyId');
   localStorage.removeItem('secretAccessKey');
   localStorage.removeItem('bucketName');
@@ -39,11 +39,15 @@ const getStoredCredentials = async (): Promise<AWSCredentials|undefined> => {
     const secretAccessKey = await decryptString(storedSecretAccessKey);
     const bucketName = await decryptString(storedBucketName);
 
-    return {
-      accessKeyId,
-      secretAccessKey,
-      bucketName,
-    };
+    if (accessKeyId && secretAccessKey && bucketName) {
+      return {
+        accessKeyId,
+        secretAccessKey,
+        bucketName,
+      };
+    }
+
+    return;
   } catch (error) {
     console.warn('Something went wrong when trying to get securely stored credentials');
   }
@@ -81,6 +85,6 @@ export const authenticate = async (
 };
 
 export const logout = () => {
-  forgetCredentials();
+  forgetStoredCredentials();
   dispatch(signOut());
 };

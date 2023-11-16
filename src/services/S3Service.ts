@@ -22,7 +22,6 @@ class S3Service {
     const params: S3.ListObjectsV2Request = {
       Bucket: this.#bucketName,
       MaxKeys: 1, // Fetch only one object
-
     };
       await this.#s3.listObjectsV2(params).promise();
   }
