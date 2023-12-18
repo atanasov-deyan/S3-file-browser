@@ -1,7 +1,7 @@
 {
   "name": "s3-file-browser",
   "version": "1.0.0",
-  "description": "Solution to the lucidlink FE engineer assignment",
+  "description": "A simple implementation of an AWS S3 bucker file explorer.",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
