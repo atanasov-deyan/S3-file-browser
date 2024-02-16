@@ -8,7 +8,7 @@ import { Button } from './layout/Button';
 
 import styles from './FilePreview.module.css';
 
-interface IFilePreviewProps {
+type Props = {
   fileKey: ObjectKey;
 }
 
@@ -16,7 +16,7 @@ const closeModal = () => {
   dispatch(closeFilePreviewModal());
 };
 
-export const FilePreview = ({ fileKey }: IFilePreviewProps) => {
+export const FilePreview = ({ fileKey }: Props) => {
   const [fileContent, isLoading] = useFileContent(fileKey);
 
   if (isLoading) {

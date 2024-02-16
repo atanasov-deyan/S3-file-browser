@@ -2,12 +2,12 @@ import { useFilesState } from '../store/storeFacade';
 import { isFile } from '../utils/fileSystem';
 import { NavFolder } from './NavFolder';
 
-interface INavFolderListProps {
+type Props = {
   className?: string;
   folderPath: string;
 }
 
-export const NavFolderList = ({ className, folderPath }: INavFolderListProps) => {
+export const NavFolderList = ({ className, folderPath }: Props) => {
   const { filesTree } = useFilesState();
   const { [folderPath]: folderContent } = filesTree;
   const folders = folderContent?.filter((entry) => !isFile(entry));

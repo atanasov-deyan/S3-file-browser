@@ -2,11 +2,11 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { noop } from '../../utils/noop';
 
-interface IAuthState {
+type AuthState = {
   isAuthorized: boolean;
 }
 
-const initialState: IAuthState = {
+const initialState: AuthState = {
   isAuthorized: false,
 };
 

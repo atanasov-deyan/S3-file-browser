@@ -13,7 +13,7 @@ const isValidName= (name: string): boolean => {
   return pattern.test(name);
 };
 
-interface ICreateEntityForm {
+type Props = {
   handleSubmit: FormEventHandler;
   entityType: string;
   fileName?: string;
@@ -21,7 +21,7 @@ interface ICreateEntityForm {
 
 const errorMessage = 'The following symbols are not allowed: "/", "\\", "." and empty space';
 
-export const CreateEntityForm = ({ handleSubmit, entityType, fileName }: ICreateEntityForm) => {
+export const CreateEntityForm = ({ handleSubmit, entityType, fileName }: Props) => {
   const [value, setValue] = useState('');
   const [touched, setTouched] = useState(false);
   const showErrorMessage = touched && !isValidName(value);

@@ -5,7 +5,7 @@ import { Button } from './layout/Button';
 
 import styles from './NavFolderAction.module.css';
 
-interface INavFolderActionProps {
+type Props = {
   onClick: MouseEventHandler;
   isFolderSelected: boolean;
   hasSubFolders: boolean;
@@ -19,7 +19,7 @@ export const NavFolderAction = ({
   hasSubFolders,
   name,
   isExpanded,
-}: INavFolderActionProps) => {
+}: Props) => {
   const angleIconName = isExpanded ? 'angle-down' : 'angle-right';
   const folderIconName = isExpanded ? 'folder-open-o' : 'folder-o';
 

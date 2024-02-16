@@ -1,4 +1,4 @@
-import { IParsedError } from '../../utils/parseError';
+import { ParsedError } from '../../utils/parseError';
 
 import style from './ErrorMessage.module.css';
 
@@ -8,7 +8,7 @@ type BasicError = {
 };
 
 interface IErrorMessageProps {
-  error?: IParsedError | BasicError;
+  error?: ParsedError | BasicError;
   showError: boolean;
 }
 

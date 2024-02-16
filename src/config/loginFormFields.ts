@@ -1,6 +1,6 @@
-import { IFormField } from '../definitions/FormField';
+import { FormField } from '../definitions/FormField';
 
-const accessKeyIdField: IFormField = {
+const accessKeyIdField: FormField = {
   name: 'accessKeyId',
   required: true,
   placeholder: 'Enter access key id...',
@@ -8,7 +8,7 @@ const accessKeyIdField: IFormField = {
   type: 'text',
 };
 
-const secretAccessKeyField: IFormField = {
+const secretAccessKeyField: FormField = {
   name: 'secretAccessKey',
   required: true,
   placeholder: 'Enter secret access key...',
@@ -16,7 +16,7 @@ const secretAccessKeyField: IFormField = {
   type: 'password',
 };
 
-const bucketNameField: IFormField = {
+const bucketNameField: FormField = {
   name: 'bucketName',
   required: true,
   placeholder: 'Enter bucket name...',
@@ -25,7 +25,7 @@ const bucketNameField: IFormField = {
 };
 
 
-export const loginFormFields: IFormField[] = [
+export const loginFormFields: FormField[] = [
   accessKeyIdField,
   secretAccessKeyField,
   bucketNameField,

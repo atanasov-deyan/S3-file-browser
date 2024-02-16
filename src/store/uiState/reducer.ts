@@ -6,12 +6,12 @@ type FilePreviewModalState = {
   fileKey: ObjectKey | null,
 }
 
-interface IUiState {
+type UiState = {
   filePreviewModal: FilePreviewModalState;
   fileKeyToDelete: ObjectKey | null,
 }
 
-const initialState: IUiState = {
+const initialState: UiState = {
   filePreviewModal: {
     isVisible: false,
     fileKey: null,
@@ -35,7 +35,7 @@ export const uiSlice = createSlice({
         ...initialState.filePreviewModal,
       };
     },
-    setFileKeyToDelete: (state, action: PayloadAction<{ fileKey: IUiState['fileKeyToDelete'] }>) => {
+    setFileKeyToDelete: (state, action: PayloadAction<{ fileKey: UiState['fileKeyToDelete'] }>) => {
       const { fileKey } = action.payload;
       state.fileKeyToDelete = fileKey;
     },

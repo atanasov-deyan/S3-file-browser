@@ -11,11 +11,11 @@ import { openFilePreviewModal, setFileKeyToDelete } from '../store/uiState/reduc
 
 import styles from './FileExplorerItem.module.css';
 
-interface IFileExplorerItemProps {
+type Props = {
   name: string;
 }
 
-export const FileExplorerItem = ({ name }: IFileExplorerItemProps) => {
+export const FileExplorerItem = ({ name }: Props) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { fileKeyToDelete } = useUiState();

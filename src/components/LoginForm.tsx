@@ -4,7 +4,7 @@ import { Button } from './layout/Button';
 import { loginFormFields } from '../config';
 import { authenticate } from '../store/authState/effects';
 import { useErrorState, useLoadingState } from '../store/storeFacade';
-import { IFormField } from '../definitions/FormField';
+import { FormField } from '../definitions/FormField';
 import { ErrorMessage } from './layout/ErrorMessage';
 
 import styles from './LoginForm.module.css';
@@ -33,7 +33,7 @@ export const LoginForm = () => {
       {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
       <form onSubmit={handleSubmit}>
         <ul className={styles['items-list']}>
-          {loginFormFields.map((field: IFormField) => (
+          {loginFormFields.map((field: FormField) => (
             <li className={styles.item} key={field.name}>
               <label
                 className={styles.label}

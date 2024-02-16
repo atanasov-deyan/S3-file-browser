@@ -4,12 +4,12 @@ import { entityTypes } from '../config';
 
 import styles from './CreateFileEntityActions.module.css';
 
-interface ICreateNewEntityActions {
+type Props = {
   setNewEntity: (v: string) => void;
   isDisabled: boolean;
 }
 
-export const CreateNewEntityActions = ({ setNewEntity, isDisabled }: ICreateNewEntityActions) => {
+export const CreateNewEntityActions = ({ setNewEntity, isDisabled }: Props) => {
   const addFolder = () => setNewEntity(entityTypes.folder);
   const addFile = () => setNewEntity(entityTypes.file);
 

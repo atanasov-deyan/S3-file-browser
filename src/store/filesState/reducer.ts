@@ -12,13 +12,13 @@ export enum FilesEventEnum {
   SYNC_FILES = 'SYNC_FILES',
 }
 
-interface IFilesState {
+type FilesState = {
   allObjects: IObject[];
   filesTree: FilesTree;
   eventTracker: FilesEventEnum | null;
 }
 
-const initialState: IFilesState = {
+const initialState: FilesState = {
   allObjects: [],
   filesTree: {
     [ROOT_DIR_NAME]: [],

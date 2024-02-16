@@ -3,7 +3,7 @@ import { shallowEqual } from 'react-redux';
 
 import store from './index';
 import { useAppSelector } from './hooks';
-import { IParsedError } from '../utils/parseError';
+import { ParsedError } from '../utils/parseError';
 
 export const dispatch = (action: AnyAction): void => {
   store.dispatch(action);
@@ -19,7 +19,7 @@ export const useLoadingState = (actionName: string): boolean => useAppSelector(
   shallowEqual,
 );
 
-export const useErrorState = (actionName: string): IParsedError|undefined => useAppSelector(
+export const useErrorState = (actionName: string): ParsedError|undefined => useAppSelector(
   (state) => state.networkState.errors[actionName],
   shallowEqual,
 );

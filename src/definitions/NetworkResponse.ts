@@ -1,6 +1,6 @@
 import { Dictionary } from './Dictionary';
 
-export interface NetworkResponseSuccess {
+export type NetworkResponseSuccess = {
   body?: ReadableStream;
   headers?: Headers;
   ok?: boolean;
@@ -9,7 +9,7 @@ export interface NetworkResponseSuccess {
   url?: string;
 }
 
-export interface NetworkResponseFailure {
+export type NetworkResponseFailure = {
   body?: Dictionary<unknown> | null;
   status?: number;
   statusText?: string;

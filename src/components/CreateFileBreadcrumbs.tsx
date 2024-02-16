@@ -3,12 +3,12 @@ import { Icon } from './layout/Icon';
 
 import styles from './CreateFileBreadcrumbs.module.css';
 
-interface ICreateFileBreadcrumbsProps {
+type Props = {
   currentPath: string;
   setCurrentPath: (value: string) => void;
 }
 
-export const CreateFileBreadcrumbs = ({ currentPath, setCurrentPath }: ICreateFileBreadcrumbsProps) => {
+export const CreateFileBreadcrumbs = ({ currentPath, setCurrentPath }: Props) => {
   const newFolderPath = currentPath.split('/');
   const pathToDisplay = newFolderPath.slice(0, newFolderPath.length - 1);
   const currentLocation = newFolderPath.at(-1);

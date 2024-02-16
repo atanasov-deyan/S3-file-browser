@@ -12,11 +12,11 @@ import { FilesEventEnum, trackFilesEvent } from '../store/filesState/reducer';
 
 import styles from './CreateFile.module.css';
 
-interface ICreateFile {
+type Props = {
   onCancel: VoidFunction;
 }
 
-export const CreateFile = ({ onCancel }: ICreateFile) => {
+export const CreateFile = ({ onCancel }: Props) => {
   const isLoading = useLoadingState('files/createFile');
   const { pathname } = useLocation();
 

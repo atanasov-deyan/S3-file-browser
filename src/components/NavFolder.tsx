@@ -9,7 +9,7 @@ import { NavFolderAction } from './NavFolderAction';
 
 import styles from './NavFolder.module.css';
 
-interface INavFolderProps {
+type Props = {
   name: string;
   parentPath: string;
 }
@@ -22,7 +22,7 @@ const getFolders = (folderContent: string[]|undefined): string[] => {
   return folderContent.filter((entry: string) => !isFile(entry));
 };
 
-export const NavFolder = ({ name, parentPath }: INavFolderProps) => {
+export const NavFolder = ({ name, parentPath }: Props) => {
   const { filesTree } = useFilesState();
   const [isExpanded, setExpanded] = useState(false);
   const navigate = useNavigate();

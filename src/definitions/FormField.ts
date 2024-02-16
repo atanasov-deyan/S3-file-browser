@@ -1,6 +1,6 @@
 import { HTMLInputTypeAttribute } from 'react';
 
-export interface IFormField {
+export type FormField = {
   name: string;
   required?: boolean;
   placeholder?: string;

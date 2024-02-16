@@ -17,7 +17,7 @@ export const FileExplorer = () => {
 
   useEffect(() => {
     // upon initial boot we do not want to redirect the user since we will always only have the empty root dir;
-    const tryToRedirect = !isLoading && typeof isLoading !== undefined;
+    const tryToRedirect = !isLoading && typeof isLoading !== 'undefined';
     if (tryToRedirect && !filesTree[pathname]) {
       const redirectTo = getNextAvailablePath(pathname, filesTree);
       navigate(redirectTo);

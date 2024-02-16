@@ -7,12 +7,12 @@ import { Spin } from './layout/Spin';
 
 import styles from './DeleteFile.module.css';
 
-interface IDeleteFileProps {
-  fileKey: string,
-  closeModal: VoidFunction,
+type Props = {
+  fileKey: string;
+  closeModal: VoidFunction;
 }
 
-export const DeleteFile = ({ fileKey, closeModal }: IDeleteFileProps) => {
+export const DeleteFile = ({ fileKey, closeModal }: Props) => {
   const { allObjects } = useFilesState();
   const isLoading = useLoadingState('files/deleteFile');
 
