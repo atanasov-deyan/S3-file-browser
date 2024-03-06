@@ -27,7 +27,7 @@ export const FileExplorer = () => {
 
   if (isLoading) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', width: `calc(100vw - 300px)`}}>
+      <div className={styles['folders-loading']}>
         <div>
           <Spin spin/>
         </div>

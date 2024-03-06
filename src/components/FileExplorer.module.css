@@ -9,3 +9,9 @@
 .list-item {
   margin-bottom: var(--base-spacing);
 }
+
+.folders-loading {
+  display: flex;
+  justify-content: center;
+  width: calc(100vw - 300px);
+}
